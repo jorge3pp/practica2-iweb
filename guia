@@ -1,0 +1,9 @@
+1.- Crear el .env (archivo dependiente de cada ordenador) que por defecto está en el gitignore, por lo que no está controlado por la gestión de versiones. Al crearlo, copiamos el contenido de .envexample.
+
+2.- Hacer touch Proyecto_Guardia_Civil/database/database.sqlite
+
+3.- Hacer migracion con php artisan migrate
+
+4.- Hacer seeders php artisan db:seed
+
+Ya estará listo el proyecto.
