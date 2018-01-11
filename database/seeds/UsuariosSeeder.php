@@ -13,56 +13,49 @@ class UsuariosSeeder extends Seeder
     {
         DB::table('usuarios')->delete();
         
-         DB::table('usuarios')->insert(['name' => 'Pedro Antonio Moya','email' => 'pedroantonino123@gmail.com',
+         DB::table('usuarios')->insert(['nombre_usuario' => 'Pedro Antonio Moya','email' => 'pedroantonino123@gmail.com',
             'password' => bcrypt('prueba123')]);
     
-
-    
-            //$pass_cifrada = bcrypt('administrador123');
-            
-            DB::table('usuarios')->insert(['name' => 'Administrador','email' => 'Admin@admin.com',
-            'password' => bcrypt('administrador123'),]);
-            /*
-            DB::table('usuarios')->insert(['name' => 'Juan Ramos Ávila','email' => 'juanra_avila@gmail.com',
+/*
             'password' => bcrypt('prueba123')]);
     
-            DB::table('usuarios')->insert(['name' => 'Manuel Pérez Hernandez','email' => 'manuperez12@gmail.com',
+            DB::table('usuarios')->insert(['nombre_usuario' => 'Manuel Pérez Hernandez','email' => 'manuperez12@gmail.com',
             'password' => bcrypt('prueba123')]);
     
-            DB::table('usuarios')->insert(['name' => 'Manuel Poveda','email' => 'manuelpoveda@gmail.com',
+            DB::table('usuarios')->insert(['nombre_usuario' => 'Manuel Poveda','email' => 'manuelpoveda@gmail.com',
             'password' => bcrypt('prueba123')]);
     
-            DB::table('usuarios')->insert(['name' => 'Antonio Garrido','email' => 'antoniogarrido@gmail.com',
+            DB::table('usuarios')->insert(['nombre_usuario' => 'Antonio Garrido','email' => 'antoniogarrido@gmail.com',
             'password' => bcrypt('prueba123')]);
     
-            DB::table('usuarios')->insert(['name' => 'Samuel L Jackson','email' => 'samulj@gmail.com',
+            DB::table('usuarios')->insert(['nombre_usuario' => 'Samuel L Jackson','email' => 'samulj@gmail.com',
             'password' => bcrypt('prueba123')]);
     
-            DB::table('usuarios')->insert(['name' => 'Matt Damon','email' => 'mdamon@gmail.com',
+            DB::table('usuarios')->insert(['nombre_usuario' => 'Matt Damon','email' => 'mdamon@gmail.com',
             'password' => bcrypt('prueba123')]);
     
-            DB::table('usuarios')->insert(['name' => 'Brad Pitt','email' => 'bpitt@gmail.com',
+            DB::table('usuarios')->insert(['nombre_usuario' => 'Brad Pitt','email' => 'bpitt@gmail.com',
             'password' => bcrypt('prueba123')]);
     
-            DB::table('usuarios')->insert(['name' => 'Bryan Parker','email' => 'bparker@gmail.com',
+            DB::table('usuarios')->insert(['nombre_usuario' => 'Bryan Parker','email' => 'bparker@gmail.com',
             'password' => bcrypt('prueba123')]);
     
-            DB::table('usuarios')->insert(['name' => 'Antonio Manuel Navarro','email' => 'antoniomanuel@gmail.com',
+            DB::table('usuarios')->insert(['nombre_usuario' => 'Antonio Manuel Navarro','email' => 'antoniomanuel@gmail.com',
             'password' => bcrypt('prueba123')]);
     
-            DB::table('usuarios')->insert(['name' => 'Carmelo Garcia','email' => 'carmelogarcia@gmail.com',
+            DB::table('usuarios')->insert(['nombre_usuario' => 'Carmelo Garcia','email' => 'carmelogarcia@gmail.com',
             'password' => bcrypt('prueba123')]);
     
-            DB::table('usuarios')->insert(['name' => 'Ricardo Santos','email' => 'ricardosantos@gmail.com',
+            DB::table('usuarios')->insert(['nombre_usuario' => 'Ricardo Santos','email' => 'ricardosantos@gmail.com',
             'password' => bcrypt('prueba123')]);
     
-            DB::table('usuarios')->insert(['name' => 'Juan Manuel Rives','email' => 'juanmanuelrives@gmail.com',
+            DB::table('usuarios')->insert(['nombre_usuario' => 'Juan Manuel Rives','email' => 'juanmanuelrives@gmail.com',
             'password' => bcrypt('prueba123')]);
     
-            DB::table('usuarios')->insert(['name' => 'Pablo Santos','email' => 'pablosantos@gmail.com',
+            DB::table('usuarios')->insert(['nombre_usuario' => 'Pablo Santos','email' => 'pablosantos@gmail.com',
             'password' => bcrypt('prueba123')]);
     
-            DB::table('usuarios')->insert(['name' => 'Rodrigo Manresa','email' => 'rodrigomanresa@gmail.com',
+            DB::table('usuarios')->insert(['nombre_usuario' => 'Rodrigo Manresa','email' => 'rodrigomanresa@gmail.com',
             'password' => bcrypt('prueba123')]);
             */
     }
