@@ -37,5 +37,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RepositoriosSeeder::class);
         $this->command->info('Seeder de Repositorios ejecutado');
+
+        $this->call(ListaUsuariosRepoSeeder::class);
+        $this->command->info('Seeder de ListaUsuariosRepo ejecutado');
     }
 }
