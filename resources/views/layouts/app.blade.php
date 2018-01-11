@@ -56,50 +56,10 @@
 					</ul>
 					
 				@else
-					@if(Auth::user()->rol == '3')
 					<ul class="nav navbar-nav">
-						<li><a href="/agentes">Agentes</a></li>
-					</ul>
-					<ul class="nav navbar-nav">
-						<li><a href="/cuarteles">Cuarteles</a></li>
-					</ul>
-					<ul class="nav navbar-nav">
-						<li><a href="/denuncias">Denuncias</a></li>
-					</ul>
-					<ul class="nav navbar-nav">
-						<li><a href="/tareas">Tareas</a></li>
-					</ul>
-					<ul class="nav navbar-nav">
-						<li><a href="/usuarios">Usuarios</a></li>
-					</ul>
-					<ul class="nav navbar-nav">
-						<li><a href="/insertar">Insertar datos</a></li>
-					</ul>
-					<ul class="nav navbar-nav">
-						<li><a href="/search">Búsqueda</a></li>
+						<li><a href="/repositorios">Repositorios</a></li>
 					</ul>
 
-					@else
-						@if(Auth::user()->rol == '2')
-						<ul class="nav navbar-nav">
-						<li><a href="/tareasporagente">Tareas</a></li>
-						</ul>
-						<ul class="nav navbar-nav">
-						<li><a href="/cuartelesporagente">Cuarteles</a></li>
-						</ul>
-						
-						<ul class="nav navbar-nav">
-						<li><a href="/denunciasporagente">Denuncias</a></li>
-						</ul>
-						@else
-							<ul class="nav navbar-nav">
-							<li><a href="/cuartelesp">Cuarteles</a></li>
-							</ul>
-							<ul class="nav navbar-nav">
-								<li><a href="/denunciasp">Denuncias</a></li>
-							</ul>
-						@endif
-					@endif
 				@endif
 
 				<ul class="nav navbar-nav navbar-right">

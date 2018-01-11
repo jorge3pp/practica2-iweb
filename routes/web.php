@@ -39,6 +39,11 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     Route::get('/denunciasporagente','WebController@denunciasAgente');
     Route::get('/denunciasporagente/insertar','WebController@insertarDenunciaAgente');
     Route::post('/denunciasporagente/insertar','WebController@insertarDenunciaAgentePostear');
+
+    //RUTAS NUEVAS
+
+    Route::get('/repositorios','WebController@repositoriosUsuario');
+    Route::get('/repositorios/{id}','WebController@repositoriosUsuario');
 });
 
 Route::group(['middleware' => 'partePrivadaAdmin'], function() {

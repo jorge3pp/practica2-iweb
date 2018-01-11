@@ -17,6 +17,24 @@ class WebController extends Controller
         return view('welcome');
     }
 
+
+    //AQUI VA NUESTRO CODIGO TT
+
+
+    public function repositoriosUsuario() {
+
+        $user = \Auth::user();
+        $repositorios = DB::table('repositorios')->where('administrador',$user->id)->paginate(10);
+        return view('1repositorios')->with('valores',$repositorios);
+    }
+
+
+
+
+
+
+    // AQUI EMPIEZA EL DE LA PRACTICA ANTERIOR AUNQUE HAY COSAS QUE VALEN O SEA QUE MUCHO OJO CABRON
+
     public function agentes() {
         $agentes = DB::table('agentes')->paginate(10);
         return view('agentes')->with('valores', $agentes);
@@ -873,6 +891,8 @@ public function insertarDenunciaAgente(Request $request){
             return view('error');
         }
     }
+
+    
     public function denunciasAgente()
     {
         $agente = Agente::where('user_id',\Auth::user()->email)->first();
