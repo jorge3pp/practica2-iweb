@@ -16,28 +16,7 @@ class UsuariosSeeder extends Seeder
          DB::table('usuarios')->insert(['nombre_usuario' => 'Pedro Antonio Moya','email' => 'pedroantonino123@gmail.com',
             'password' => bcrypt('prueba123')]);
     
-            DB::table('usuarios')->insert(['nombre_usuario' => 'Agente Pedro','email' => 'pedro@gmail.com',
-            'password' => bcrypt('prueba123')]);
-    
-            DB::table('usuarios')->insert(['nombre_usuario' => 'Placido Antonio Lopez','email' => 'placidico432@gmail.com',
-            'password' => bcrypt('prueba123')]);
-    
-            DB::table('usuarios')->insert(['nombre_usuario' => 'Jorge Poveda Perez','email' => 'jorge_elda_1996@gmail.com',
-            'password' => bcrypt('prueba123')]);
-    
-            DB::table('usuarios')->insert(['nombre_usuario' => 'Jorge Garcia Serrano','email' => 'jorgicoserrano96@gmail.com',
-            'password' => bcrypt('prueba123')]);
-    
-    
-            DB::table('usuarios')->insert(['nombre_usuario' => 'Miguel Pérez','email' => 'miguel@gmail.com',
-            'password' => bcrypt('prueba123')]);
-    
-            //$pass_cifrada = bcrypt('administrador123');
-            
-            DB::table('usuarios')->insert(['nombre_usuario' => 'Administrador','email' => 'Admin@admin.com',
-            'password' => bcrypt('administrador123'),]);
-    
-            DB::table('usuarios')->insert(['nombre_usuario' => 'Juan Ramos Ávila','email' => 'juanra_avila@gmail.com',
+/*
             'password' => bcrypt('prueba123')]);
     
             DB::table('usuarios')->insert(['nombre_usuario' => 'Manuel Pérez Hernandez','email' => 'manuperez12@gmail.com',
@@ -78,5 +57,6 @@ class UsuariosSeeder extends Seeder
     
             DB::table('usuarios')->insert(['nombre_usuario' => 'Rodrigo Manresa','email' => 'rodrigomanresa@gmail.com',
             'password' => bcrypt('prueba123')]);
+            */
     }
 }

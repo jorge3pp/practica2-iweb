@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateComentPRTable extends Migration
+class CreateIssuePRTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,12 @@ class CreateComentPRTable extends Migration
      */
     public function up()
     {
-        Schema::create('comentPR', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('contenido');
-            $table->date('fecha');
-            $table->string('reacciones');
+        Schema::create('issuePR', function (Blueprint $table) {
+            $table->integer('id_issue')->unique();
+            $table->integer('id_pr')->unique();
 
-
-            $table->integer('id_pr');
+            $table->foreign('id_issue')->references('id')->on('issue');
             $table->foreign('id_pr')->references('id')->on('pulls');
-
-            $table->integer('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('users');
 
             $table->timestamps();
         });
@@ -37,6 +31,6 @@ class CreateComentPRTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comentPR');
+        Schema::dropIfExists('issuePR');
     }
 }

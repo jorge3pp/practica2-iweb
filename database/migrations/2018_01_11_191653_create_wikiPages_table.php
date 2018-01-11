@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateComentCommitTable extends Migration
+class CreateWikiPagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateComentCommitTable extends Migration
      */
     public function up()
     {
-        Schema::create('comentCommit', function (Blueprint $table) {
+        Schema::create('wiki_pages', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
             $table->string('contenido');
-            $table->date('fecha');
-            $table->string('reacciones');
 
-            $table->integer('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('users');
-            
-            $table->integer('id_commit');
-            $table->foreign('id_commit')->references('id')->on('commit');
+            $table->integer('id_wiki');
+            $table->foreign('id_wiki')->references('id')->on('wiki');
 
             $table->timestamps();
         });
@@ -36,6 +32,6 @@ class CreateComentCommitTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comentCommit');
+        Schema::dropIfExists('wiki_pages');
     }
 }
