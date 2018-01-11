@@ -13,7 +13,7 @@ class RepositoriosSeeder extends Seeder
     {
         DB::table('repositorios')->delete();
         
-        $admin = DB::table('usuarios')->where('email','pedroantonino123@gmail.com')->first();
+        $admin = DB::table('users')->where('email','pedroantonino123@gmail.com')->first();
 
         DB::table('repositorios')->insert(['nombre' => 'IngenieriaWeb Mola','administrador' => $admin->id, 'estrellas'=> 0,
             'contador_seguidores' => 1 ]);

@@ -16,7 +16,7 @@ class CreateListaUsurepo extends Migration
         Schema::create('lista_usuarios_repo', function (Blueprint $table) {
             $table->integer('id_usuario');
             $table->integer('id_repo');
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
+            $table->foreign('id_usuario')->references('id')->on('users');
             $table->foreign('id_repo')->references('id')->on('repositorios');
             $table->primary('id_usuario','id_repo');
             $table->timestamps();

@@ -22,7 +22,7 @@ class CreateRepositoriosTable extends Migration
             // privPub == 0 se trata de un repo privado
             // privPub == 1 se trata de un repo publico
             $table->integer('privPub')->default(0);
-            $table->foreign('administrador')->references('id')->on('usuarios')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('administrador')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

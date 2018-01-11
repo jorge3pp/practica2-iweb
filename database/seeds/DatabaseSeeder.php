@@ -32,9 +32,6 @@ class DatabaseSeeder extends Seeder
         //$this->call(Denuncia_UserTableSeeder::class);
         $this->command->info('Seeder de Denuncia_User ejecutado');
 
-        $this->call(UsuariosSeeder::class);
-        $this->command->info('Seeder de Usuarios ejecutado');
-
         $this->call(RepositoriosSeeder::class);
         $this->command->info('Seeder de Repositorios ejecutado');
 

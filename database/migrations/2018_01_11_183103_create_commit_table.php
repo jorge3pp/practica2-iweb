@@ -19,7 +19,7 @@ class CreateCommitTable extends Migration
             $table->string('cambios');
 
             $table->integer('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
+            $table->foreign('id_usuario')->references('id')->on('users');
 
             $table->integer('id_pr');
             $table->foreign('id_pr')->references('id')->on('pulls')->nullable();

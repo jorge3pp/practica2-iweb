@@ -20,7 +20,7 @@ class CreateComentCommitTable extends Migration
             $table->string('reacciones');
 
             $table->integer('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
+            $table->foreign('id_usuario')->references('id')->on('users');
             
             $table->integer('id_commit');
             $table->foreign('id_commit')->references('id')->on('commit');

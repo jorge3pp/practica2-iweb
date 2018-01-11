@@ -20,7 +20,7 @@ class CreateRamasTable extends Migration
 
 
             $table->integer('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
+            $table->foreign('id_usuario')->references('id')->on('users');
 
             $table->integer('id_repo');
             $table->foreign('id_repo')->references('id')->on('repositorios');
