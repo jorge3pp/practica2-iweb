@@ -43,7 +43,9 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     //RUTAS NUEVAS
 
     Route::get('/repositorios','WebController@repositoriosUsuario');
-    Route::get('/repositorios/{id}','WebController@repositoriosUsuario');
+    Route::get('/repositorios/{id}','WebController@datosRepositorio');
+
+    
 });
 
 Route::group(['middleware' => 'partePrivadaAdmin'], function() {

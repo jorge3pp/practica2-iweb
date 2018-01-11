@@ -18,6 +18,12 @@ class WebController extends Controller
     }
 
 
+
+
+
+
+
+
     //AQUI VA NUESTRO CODIGO TT
 
 
@@ -28,12 +34,35 @@ class WebController extends Controller
         return view('1repositorios')->with('valores',$repositorios);
     }
 
+    public function datosRepositorio($id) {
+        $user = \Auth::user();
+        $repositorio = DB::table('repositorios')->where('id',$id)->first();
+        if($repositorio->privPub == '0' && $repositorio->administrador == $user->id) {
+            return view('1datosRepositorio')->with('valor',$repositorio);
+        }
+        else {
+            return view('error_permisos_repositorio');
+        }
+        
+    }
+        
+
 
 
 
 
 
     // AQUI EMPIEZA EL DE LA PRACTICA ANTERIOR AUNQUE HAY COSAS QUE VALEN O SEA QUE MUCHO OJO CABRON
+
+
+
+
+
+
+
+
+
+
 
     public function agentes() {
         $agentes = DB::table('agentes')->paginate(10);

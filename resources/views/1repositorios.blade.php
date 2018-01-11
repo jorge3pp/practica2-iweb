@@ -11,7 +11,7 @@
 		</div>
 
         <div class="container">
-            <h1>Repositorios privado</h1>
+            <h1>Repositorios privados</h1>
             <table class="table table-striped">
                 <tr>
                     <th>NOMBRE</th>
@@ -22,7 +22,7 @@
                     
                 <tr>
                     @if($valor->privPub == '0')
-                    <td><a  href="{{action('WebController@datosRepositorio', $valor->id)}}"> {{ $valor->nombre }}</a> </td>
+                    <td><a href="{{action('WebController@datosRepositorio', $valor->id)}}"> {{ $valor->nombre }}</a> </td>
                     @endif
                     
                 </tr> 
@@ -43,7 +43,7 @@
                     
                 <tr>
                     @if($valor->privPub == '1')
-                    <td><a  href="{{action('WebController@datosRepositorio', $valor->id)}}"> {{ $valor->nombre }}</a> </td>
+                    <td><a href="{{action('WebController@datosRepositorio', $valor->id)}}"> {{ $valor->nombre }}</a> </td>
                     @endif
                     
                 </tr> 
