@@ -12,6 +12,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->delete();
+        /*
 	
      DB::table('users')->insert(['name' => 'Pedro Antonio Moya','email' => 'pedroantonino123@gmail.com',
         'DNI' => '76154863M','password' => bcrypt('prueba123'),'rol' => 2, 'telefono' => 601024789, 
@@ -39,11 +40,10 @@ class UserTableSeeder extends Seeder
         'telefono' => 601674789,'direccion' => 'C/ Orihuela Nº16']);
 
         //$pass_cifrada = bcrypt('administrador123');
-        
+        */
         DB::table('users')->insert(['name' => 'Administrador','email' => 'Admin@admin.com',
-        'DNI' => '-','password' => bcrypt('administrador123'), 'telefono' => 0,
-        'direccion' => 'Sin direccion','rol'=>3]);
-
+        'password' => bcrypt('administrador123')]);
+        /*
         DB::table('users')->insert(['name' => 'Juan Ramos Ávila','email' => 'juanra_avila@gmail.com',
         'DNI' => '30418882L','password' => bcrypt('prueba123'), 'rol' => 2, 'telefono' => 632891084,
         'direccion' => 'C/ Camino Enmedio 15 Alicante']);
@@ -99,5 +99,6 @@ class UserTableSeeder extends Seeder
         DB::table('users')->insert(['name' => 'Rodrigo Manresa','email' => 'rodrigomanresa@gmail.com',
         'DNI' => '28951403L','password' => bcrypt('prueba123'), 'telefono' => 714848204,
         'direccion' => 'C/ San Bartolome 35 Valencia']);
+        */
     }
 }
