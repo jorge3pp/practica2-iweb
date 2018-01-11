@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TareaTableSeeder::class);
         $this->command->info('Seeder de Tarea ejecutado');
 
-        $this->call(Agente_TareaTableSeeder::class);
+        //$this->call(Agente_TareaTableSeeder::class);
         $this->command->info('Seeder de Agente_Tarea ejecutado');
 
         $this->call(Denuncia_UserTableSeeder::class);

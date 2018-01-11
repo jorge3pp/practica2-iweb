@@ -17,8 +17,8 @@ class CreateRepositoriosTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->integer('administrador');
-            $table->string('estrellas');
-            $table->string('contador_seguidores');
+            $table->integer('estrellas');
+            $table->integer('contador_seguidores');
             // privPub == 0 se trata de un repo privado
             // privPub == 1 se trata de un repo publico
             $table->integer('privPub')->default(0);
