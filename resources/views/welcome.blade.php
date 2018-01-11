@@ -92,7 +92,7 @@
             <div class="content">
                 <div class="title m-b-md">
                     <img src="gcivil.png" width="110px" height="140px" alt="Logo"/>
-                    <font color="green">SAFE DATA</font>
+                    <font color="green">NOESGITHUB</font>
                 </div>
 
                 <div class="links">
@@ -110,11 +110,6 @@
                             <a href="http://127.0.0.1:8000/insertar">Insertar datos</a>
                             <a href="http://127.0.0.1:8000/search">Busqueda</a>
 
-
-                                
-
-                            
-
                         @else
 
                             @if(Auth::user()->rol == '2')
@@ -131,14 +126,11 @@
                 </div>
             </div>
         </div>
-
         <footer>
             <div class='define'>
                 <h5><b>Contacte con nosotros</b></h5>
                 <b><a href="https://github.com/pedroUA">Pedro Antonio Moya Garcia</a></b><br>
                 <b><a href="https://github.com/jorge3pp">Jorge Poveda </a></b><br>
-                <b><a href="https://github.com/jgs86">Jorge Garcia Serrano</a></b><br>
-                <b><a href="https://github.com/pala10">Placido Antonio Lopez Avila</a></b>
             </div>
         </footer>   
     </body>

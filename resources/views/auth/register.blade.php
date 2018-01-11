@@ -38,19 +38,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('dni') ? ' has-error' : '' }}">
-                            <label for="dni" class="col-md-4 control-label">DNI </label>
-
-                            <div class="col-md-6">
-                                <input id="dni" type="dni" class="form-control" name="dni" value="{{ old('dni') }}" required>
-
-                                @if ($errors->has('dni'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('dni') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Contraseña </label>
@@ -74,33 +61,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('direccion') ? ' has-error' : '' }}">
-                            <label for="direccion" class="col-md-4 control-label">Direccion</label>
-
-                            <div class="col-md-6">
-                                <input id="direccion" type="direccion" class="form-control" name="direccion" value="{{ old('direccion') }}" required>
-
-                                @if ($errors->has('direccion'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('direccion') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('telf') ? ' has-error' : '' }}">
-                            <label for="telf" class="col-md-4 control-label">Telefono</label>
-
-                            <div class="col-md-6">
-                                <input id="telf" type="telf" class="form-control" name="telf" value="{{ old('telf') }}" required>
-
-                                @if ($errors->has('telf'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('telf') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

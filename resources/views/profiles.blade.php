@@ -35,9 +35,6 @@
     <h3 align="left">Datos personales:</h3>
 
     <h4 align="left">Email: {{ Auth::user()->email }}</h4>
-    <h4 align="left">DNI: {{ Auth::user()->DNI }}</h4>
-    <h4 align="left">Dirección: {{ Auth::user()->direccion }}</h4>
-    <h4 align="left">Telefono: {{ Auth::user()->telefono }}</h4>
 
     <?php
         if(Auth::user()->email == 'Admin@admin.com'){
@@ -50,7 +47,6 @@
         }
     ?>
 
-    <a href="/citasp"><b>Administrar mis citas</b></a>
     </div>
     </div>
 	
