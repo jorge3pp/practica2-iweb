@@ -25,6 +25,10 @@ return array(
     'CreateDenunciaUserTable' => $baseDir . '/database/migrations/2017_03_27_155307_create_denuncia_user_table.php',
     'CreateEstadisticasTable' => $baseDir . '/database/migrations/2018_01_11_184559_create_estadisticas_table.php',
     'CreateInfoTable' => $baseDir . '/database/migrations/2018_01_11_185246_create_info_table.php',
+<<<<<<< HEAD
+=======
+    'CreateIssuePRTable' => $baseDir . '/database/migrations/2018_01_11_192956_create_issuePR_table.php',
+>>>>>>> 8badb67d979c38b9e9c7b58eaf3acc5904b8de9f
     'CreateIssueTable' => $baseDir . '/database/migrations/2018_01_11_183404_create_issue_table.php',
     'CreateListaUsurepo' => $baseDir . '/database/migrations/2018_01_11_000650_create_lista_usurepo.php',
     'CreatePullsTable' => $baseDir . '/database/migrations/2018_01_11_181933_create_pulls_table.php',
@@ -33,7 +37,13 @@ return array(
     'CreateRepositoriosTable' => $baseDir . '/database/migrations/2018_01_08_200919_create_repositorios_table.php',
     'CreateTareaTable' => $baseDir . '/database/migrations/2017_03_27_154343_create_tarea_table.php',
     'CreateUserTable' => $baseDir . '/database/migrations/2017_03_27_154233_create_user_table.php',
+<<<<<<< HEAD
     'CreateUsuariosTable' => $baseDir . '/database/migrations/2018_01_08_201223_create_usuarios_table.php',
+=======
+    'CreateWikiPagesTable' => $baseDir . '/database/migrations/2018_01_11_191653_create_wikiPages_table.php',
+    'CreateWikiRepoTable' => $baseDir . '/database/migrations/2018_01_11_192110_create_wikiRepo_table.php',
+    'CreateWikiTable' => $baseDir . '/database/migrations/2018_01_11_191522_create_wiki_table.php',
+>>>>>>> 8badb67d979c38b9e9c7b58eaf3acc5904b8de9f
     'CuartelTableSeeder' => $baseDir . '/database/seeds/CuartelTableSeeder.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'DenunciaTableSeeder' => $baseDir . '/database/seeds/DenunciaTableSeeder.php',
@@ -113,6 +123,10 @@ return array(
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'InfoSeeder' => $baseDir . '/database/seeds/InfoSeeder.php',
+<<<<<<< HEAD
+=======
+    'IssuePRSeeder' => $baseDir . '/database/seeds/IssuePRSeeder.php',
+>>>>>>> 8badb67d979c38b9e9c7b58eaf3acc5904b8de9f
     'IssueSeeder' => $baseDir . '/database/seeds/IssueSeeder.php',
     'ListaUsuariosRepoSeeder' => $baseDir . '/database/seeds/ListaUsuariosRepoSeeder.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
@@ -587,4 +601,10 @@ return array(
     'TypeError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
     'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
     'UsuariosSeeder' => $baseDir . '/database/seeds/UsuariosSeeder.php',
+<<<<<<< HEAD
+=======
+    'WikiPagesSeeder' => $baseDir . '/database/seeds/WikiPagesSeeder.php',
+    'WikiRepoSeeder' => $baseDir . '/database/seeds/WikiRepoSeeder.php',
+    'WikiSeeder' => $baseDir . '/database/seeds/WikiSeeder.php',
+>>>>>>> 8badb67d979c38b9e9c7b58eaf3acc5904b8de9f
 );

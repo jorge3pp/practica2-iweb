@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit81655f00bc3f32ec50ab4d14360190ec
+class ComposerStaticInit1575b343e10f9ed3dbab02607478c391
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -301,6 +301,7 @@ class ComposerStaticInit81655f00bc3f32ec50ab4d14360190ec
         'CreateDenunciaUserTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_27_155307_create_denuncia_user_table.php',
         'CreateEstadisticasTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_184559_create_estadisticas_table.php',
         'CreateInfoTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_185246_create_info_table.php',
+        'CreateIssuePRTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_192956_create_issuePR_table.php',
         'CreateIssueTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_183404_create_issue_table.php',
         'CreateListaUsurepo' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_000650_create_lista_usurepo.php',
         'CreatePullsTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_181933_create_pulls_table.php',
@@ -309,7 +310,9 @@ class ComposerStaticInit81655f00bc3f32ec50ab4d14360190ec
         'CreateRepositoriosTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_08_200919_create_repositorios_table.php',
         'CreateTareaTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_27_154343_create_tarea_table.php',
         'CreateUserTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_27_154233_create_user_table.php',
-        'CreateUsuariosTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_08_201223_create_usuarios_table.php',
+        'CreateWikiPagesTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_191653_create_wikiPages_table.php',
+        'CreateWikiRepoTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_192110_create_wikiRepo_table.php',
+        'CreateWikiTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_191522_create_wiki_table.php',
         'CuartelTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CuartelTableSeeder.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DenunciaTableSeeder' => __DIR__ . '/../..' . '/database/seeds/DenunciaTableSeeder.php',
@@ -389,6 +392,7 @@ class ComposerStaticInit81655f00bc3f32ec50ab4d14360190ec
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
         'InfoSeeder' => __DIR__ . '/../..' . '/database/seeds/InfoSeeder.php',
+        'IssuePRSeeder' => __DIR__ . '/../..' . '/database/seeds/IssuePRSeeder.php',
         'IssueSeeder' => __DIR__ . '/../..' . '/database/seeds/IssueSeeder.php',
         'ListaUsuariosRepoSeeder' => __DIR__ . '/../..' . '/database/seeds/ListaUsuariosRepoSeeder.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
@@ -863,15 +867,18 @@ class ComposerStaticInit81655f00bc3f32ec50ab4d14360190ec
         'TypeError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
         'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
         'UsuariosSeeder' => __DIR__ . '/../..' . '/database/seeds/UsuariosSeeder.php',
+        'WikiPagesSeeder' => __DIR__ . '/../..' . '/database/seeds/WikiPagesSeeder.php',
+        'WikiRepoSeeder' => __DIR__ . '/../..' . '/database/seeds/WikiRepoSeeder.php',
+        'WikiSeeder' => __DIR__ . '/../..' . '/database/seeds/WikiSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit81655f00bc3f32ec50ab4d14360190ec::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit81655f00bc3f32ec50ab4d14360190ec::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit81655f00bc3f32ec50ab4d14360190ec::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit81655f00bc3f32ec50ab4d14360190ec::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit1575b343e10f9ed3dbab02607478c391::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit1575b343e10f9ed3dbab02607478c391::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit1575b343e10f9ed3dbab02607478c391::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit1575b343e10f9ed3dbab02607478c391::$classMap;
 
         }, null, ClassLoader::class);
     }
