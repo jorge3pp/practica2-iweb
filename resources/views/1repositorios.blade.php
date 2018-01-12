@@ -46,7 +46,7 @@
                     
                 <tr>
                     @if($valor->privPub == '1')
-                    <td><a href="{{action('WebController@datosRepositorio', $valor->id)}}"> {{ $valor->nombre }}</a> </td>
+                    <td><a href="{{action('WebController@datosRepositorioPublico', $valor->id)}}"> {{ $valor->nombre }}</a> </td>
                     @endif
                     
                 </tr> 

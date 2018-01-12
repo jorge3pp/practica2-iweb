@@ -57,8 +57,9 @@
 					
 				@else
 					<ul class="nav navbar-nav">
-						<li><a href="/repositoriosp">Repositorios destacados</a></li>
-						<li><a href="/repositorios">Mis repositorios</a></li>
+						<li><a href="#">Issues</a></li>
+						<li><a href="#">Pull Requests</a></li>
+						
 					</ul>
 
 				@endif
@@ -68,7 +69,7 @@
 						<li><a href="login">Iniciar sesión</a></li>
 						<li><a href="register">Registrarse</a></li>
 					@else
-						<!-- Cambiar el href para que muestre los datos del usuario logueado -->
+						<li><a href="/repositorios" color="blue">Volver a MIS REPOSITORIOS</a></li>
 						<li><a href="/profile">{{ Auth::user()->name }}</a></li>
 						<li><a href="/auth/logout">Cerrar sesión</a></li>
 					@endif

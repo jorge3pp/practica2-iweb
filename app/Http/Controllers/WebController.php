@@ -36,7 +36,9 @@ class WebController extends Controller
 
     public function datosRepositorio($id) {
         $user = \Auth::user();
+        
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
+        
         if($repositorio->privPub == '0' && $repositorio->administrador == $user->id) {
             return view('1datosRepositorio')->with('valor',$repositorio);
         }
@@ -54,7 +56,7 @@ class WebController extends Controller
     public function datosRepositorioPublico($id) {
         $user = \Auth::user();
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
-        if($repositorio->privPub == '1') {
+        if($repositorio->privPub == '1' || $repositorio->administrador == $user->id) {
             return view('1datosRepositorioPublico')->with('valor',$repositorio);
         }
         else {

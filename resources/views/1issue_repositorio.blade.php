@@ -1,5 +1,5 @@
 @extends('layouts.dentro_repositorio')
-
+@extends('layouts.app')
 @section('content')
 
 
@@ -15,7 +15,7 @@
             <p>Tipo de repositorio: PRIVADO</p>
 
             @else
-            <p>Se trata de un repositorio público</p>
+            <p>Tipo de repositorio: PÚBLICO</p>
             @endif
             
             <pre class ="container">
