@@ -17,24 +17,6 @@ class WebController extends Controller
         return view('welcome');
     }
 
-
-    //AQUI VA NUESTRO CODIGO TT
-
-
-    public function repositoriosUsuario() {
-
-        $user = \Auth::user();
-        $repositorios = DB::table('repositorios')->where('administrador',$user->id)->paginate(10);
-        return view('1repositorios')->with('valores',$repositorios);
-    }
-
-
-
-
-
-
-    // AQUI EMPIEZA EL DE LA PRACTICA ANTERIOR AUNQUE HAY COSAS QUE VALEN O SEA QUE MUCHO OJO CABRON
-
     public function agentes() {
         $agentes = DB::table('agentes')->paginate(10);
         return view('agentes')->with('valores', $agentes);
@@ -891,8 +873,6 @@ public function insertarDenunciaAgente(Request $request){
             return view('error');
         }
     }
-
-    
     public function denunciasAgente()
     {
         $agente = Agente::where('user_id',\Auth::user()->email)->first();
@@ -901,4 +881,59 @@ public function insertarDenunciaAgente(Request $request){
     }
     
 
+    /* IWEB ------------------------------------------------------------------------------------------------ */
+
+
+    public function formNuevoProyecto(){
+        return view('formNuevoProyecto');
+    }
+
+    public function nuevoProyectoPostear(Request $request){
+        
+                //$id = (int)$_POST['id']; 
+                //$user = $_REQUEST['res'];
+        
+                $v = \Validator::make($request->all(),[
+                    'nombre' => 'required|max:255',
+                    'acceso' => 'required']);
+        
+                if ($v->fails()){
+                    return redirect()->back()->withInput()->withErrors($v->errors());
+                }
+                
+                $administrador = \Auth::user()->id;
+                $nombre = (string)$request->input('nombre');
+                $aux = (string)$request->input('acceso');
+
+                $acceso = -1;
+
+                if($aux == 'privado'){
+                    $acceso = 0;
+                }else if ($aux == 'publico') $acceso = 1;
+
+                $cuartel = (int)$request->input('cuartel');
+                
+                
+                try {
+                    $denuncia = new Denuncia;
+                    $denuncia->nombre = $nombre;
+                    $denuncia->motivo = $motivo;
+                    $denuncia->agente_id = $agente->id;
+                    $denuncia->user_id = $usuario;
+                    $denuncia->importe_multa = $importe;
+                    $denuncia->save();
+                    
+                   DB::table('denuncia_users')->insert(['denuncia_id' => $denuncia->id, 'user_id' => $usuario]);
+                
+
+                    DB::table('repositorios')->insert(['nombre'=>$nombre,'administrador'=>$administrador,'privPub'=>$acceso]);
+                    $user = User::where('email',$usuario_id)->first();
+                    $user->rol = 2; 
+                    $user->save();
+                    return view('1nuevoRepositorioPostear');
+                }
+                catch(\Exception $e) {
+                    return view('error');
+                }
+            }
 }

@@ -44,6 +44,9 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
 
     Route::get('/repositorios','WebController@repositoriosUsuario');
     Route::get('/repositorios/{id}','WebController@repositoriosUsuario');
+
+    Route::get('/new','WebController@formNuevoProyecto');
+    Route::post('/new','WebController@nuevoProyectoPostear');
 });
 
 Route::group(['middleware' => 'partePrivadaAdmin'], function() {
