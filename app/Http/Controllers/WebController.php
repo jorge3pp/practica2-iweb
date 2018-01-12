@@ -67,9 +67,13 @@ class WebController extends Controller
 
     public function issueRepositorio($id) {
         $issues = DB::table('issue')->where('id_repo',$id)->paginate(10);
-        //$repositorios = DB::table('repositorios')->where('privPub','1')->paginate(10);
         return view('1issue_repositorio')->with('valores',$issues);
 
+    }
+
+    public function issueRepositorioCerrados($id) {
+        $issues = DB::table('issue')->where('id_repo',$id)->paginate(10);
+        return view('1issue_repositorio_cerrados')->with('valores',$issues);
     }
 
     // AQUI ACABA EL CODIGO NUEVO

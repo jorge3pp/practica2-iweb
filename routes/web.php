@@ -59,6 +59,7 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     Route::get('/repositorios','WebController@repositoriosUsuario');
     Route::get('/repositorios/{id}','WebController@datosRepositorio');
     Route::get('/repositorios/{id}/issues','WebController@issueRepositorio');
+    Route::get('/repositorios/{id}/issuescerrados','WebController@issueRepositorioCerrados');
 
     //FIN DE ESTAS COSAS
 

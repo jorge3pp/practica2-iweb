@@ -4,9 +4,8 @@
 
 
 
-	<!-- INICIO Codigo Body de la página web -->
-
-	<h1 align="center">ISSUES ABIERTOS</h1>
+	<!-- INICIO Codigo Body de la página web -->	
+	<h1 align="center">ISSUES CERRADOS</h1>
     <nav class="navbar navbar-default navbar-inverse container">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -22,16 +21,14 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="#">Abiertos</a></li>
-                        
-                        @if(count($valores) > 0)
-						    <li><a href="{{action('WebController@issueRepositorioCerrados', $valores->get(0)->id_repo)}}">Cerrados</a></li>
-                        @endif
+						<li><a href="{{action('WebController@issueRepositorio', $valores->get(0)->id_repo)}}">Abiertos</a></li>
+						<li><a href="#">Cerrados</a></li>
 						
 					</ul>
 
                     <ul class="nav navbar-nav navbar-right">
 					@if(count($valores) > 0)
+					
 						<li><a href="{{action('WebController@datosRepositorio', $valores->get(0)->id_repo)}}">VOLVER A LA PAGINA PRINCIPAL DEL REPOSITORIO</a></li>
 					@endif
 				</ul>
@@ -44,25 +41,22 @@
 	</div>
 
     <div class="container">
-        <h1></h1>
-        <table class="table table-striped">
+    <table class="table table-striped">
 
-            @if(count($valores) < 0)
-                <h1>NO HAY ISSUES </h1>
-            @else
-                @foreach($valores as $valor)
-                    
-                    @if($valor->estado == 'abierto')
-                    <tr>
-                   
-                        <td><a> {{ $valor->nombre }}</a> </td>
-                    </tr>
-                   @endif
+        @if(count($valores) <= 0)
+            <h1>NO HAY ISSUES </h1>
+        @else
 
-                @endforeach
-            @endif
-        </table>
-    </div>
+            @foreach($valores as $valor)
+            @if($valor->estado == 'cerrado')
+				<tr>
+					<td><a> {{ $valor->nombre }}</a> </td>
+				</tr> 
+			@endif
+            @endforeach
+        @endif
+    </table>
+</div>
 
 
 		

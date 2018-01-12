@@ -13,10 +13,7 @@
         <div class="container">
             <h1>Repositorios privados</h1>
             <table class="table table-striped">
-                <tr>
-                    <th>NOMBRE</th>
 
-                </tr>
                 @foreach($valores as $valor)
 
                     
@@ -38,9 +35,7 @@
         <div class="container">
             <h1>Repositorios públicos</h1>
             <table class="table table-striped">
-                <tr>
-                    <th>NOMBRE</th>
-                </tr>
+
                 @foreach($valores as $valor)
 
                     
