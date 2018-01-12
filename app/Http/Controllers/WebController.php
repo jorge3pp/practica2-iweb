@@ -56,6 +56,7 @@ class WebController extends Controller
     public function datosRepositorioPublico($id) {
         $user = \Auth::user();
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
+        $issues = DB::table('issue')->where('id_repo',$id)->paginate(10);
         if($repositorio->privPub == '1' || $repositorio->administrador == $user->id) {
             return view('1datosRepositorioPublico')->with('valor',$repositorio);
         }
@@ -76,6 +77,92 @@ class WebController extends Controller
         return view('1issue_repositorio_cerrados')->with('valores',$issues);
     }
 
+
+    public function crearIssue(Request $request, $id){
+        return view ('1crearIssue')->with('valores',$id);
+    }
+
+    public function crearIssuePostear(Request $request, $id){
+        $user = \Auth::user();
+
+        $v = \Validator::make($request->all(),['nombre' => 'required|max:100',
+        'descripcion' => 'required|max:500']);
+
+        if ($v->fails()){
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+        
+        $nombre = (string)$request->input('nombre');
+        $descripcion = (string)$request->input('descripcion');
+
+        try{
+            DB::table('issue')->insert(['nombre'=>$nombre,'estado' => 'abierto', 'descripcion'=>$descripcion,'id_usuario'=>$user->id, 'id_repo' => $id]);
+            return view('insertarIssuePostear');
+
+        }catch(\Exception $e) {
+            return view('error');
+        }
+
+        //return view ('error404');
+    }
+    /*
+
+
+    public function modificarAgentePostear(Request $request,$id){
+
+        $nombre = (string)$request->input('nombre');
+        $cuartel = (int)$request->input('cuartel');
+
+        try{ 
+            if($id==0) throw new \Exception();
+
+            $agente = Agente::where('id',$id);
+
+            if($nombre!="") $agente->update(['nombre'=>$nombre]);
+            if($cuartel!=0) $agente->update(['cuartel_id'=>$cuartel]);
+
+            return view('modificarAgentePostear');
+        }catch(\Exception $e) {
+            return view('error');
+        }
+    }
+    public function insertarTarea(Request $request){
+        $agente = Agente::all();
+        return view ('insertarTarea')->with('valores',$agente);
+    }
+
+    public function insertarTareaPostear(Request $request){
+        
+        
+         $v = \Validator::make($request->all(),['nombre' => 'required|max:100',
+         'zona' => 'required|max:100','descripcion' => 'required|max:500',
+         'agente_id' => 'required|integer|exists:agentes,id']);
+        
+        if ($v->fails()){
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+        
+                $nombre = (string)$request->input('nombre');
+                $zona = (string)$request->input('zona');
+                $descripcion = (string)$request->input('descripcion');
+                $agente_id = (int)$request->input('agente_id');
+                
+                
+                try{
+                    DB::table('tareas')->insert(['nombre'=>$nombre, 'zona'=>$zona, 'descripcion'=>$descripcion,'agente_id'=>$agente_id]);
+        
+                    $id = DB::table('tareas')->where('nombre',$nombre)->where('zona',$zona)->where('descripcion',$descripcion)->where('agente_id',$agente_id)->first();
+        
+                    DB::table('agente_tareas')->insert(['tarea_id' => $id->id, 'agente_id'=>$agente_id]);
+                
+                    return view('insertarTareaPostear');
+                }catch(\Exception $e) {
+                    return view('error');
+                }
+            }
+
+
+            */
     // AQUI ACABA EL CODIGO NUEVO
 
 

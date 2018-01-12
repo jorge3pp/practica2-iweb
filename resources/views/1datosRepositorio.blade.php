@@ -34,6 +34,10 @@
 						
 					</ul>
 
+                    <ul class="nav navbar-nav navbar-right">
+                    
+                    </ul>
+
 				@endif
 
 				<ul class="nav navbar-nav navbar-right">

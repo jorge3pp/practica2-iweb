@@ -17,6 +17,7 @@ class CreateIssueTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('estado');
+            $table->string('descripcion');
 
             $table->integer('id_usuario');
             $table->foreign('id_usuario')->references('id')->on('users')->nullable();

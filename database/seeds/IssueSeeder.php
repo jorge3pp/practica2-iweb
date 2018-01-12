@@ -17,6 +17,9 @@ class IssueSeeder extends Seeder
 
         $repositorio = DB::table('repositorios')->where('nombre', 'IngenieriaWeb Mola')->first();
 
-        DB::table('issue')->insert(['nombre' => 'Primer Issue de pedroantonino','estado' => 'abierto','id_usuario' => $admin->id, 'id_repo'=> $repositorio->id]);
+        
+        DB::table('issue')->insert(['nombre' => 'Primer Issue de pedroantonino','estado' => 'abierto','descripcion' => 'La mejor descripcion del mundo entero jejeje','id_usuario' => $admin->id, 'id_repo'=> $repositorio->id]);
+        DB::table('issue')->insert(['nombre' => 'Segundo Issue de pedroantonino','estado' => 'cerrado','descripcion' => 'La mejor descripcion del mundo entero jejeje','id_usuario' => $admin->id, 'id_repo'=> $repositorio->id]);
+        DB::table('issue')->insert(['nombre' => 'Tercero Issue de pedroantonino','estado' => 'abierto','descripcion' => 'La mejor descripcion del mundo entero jejeje','id_usuario' => $admin->id, 'id_repo'=> $repositorio->id]);
     }
 }
