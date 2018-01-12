@@ -303,6 +303,7 @@ class ComposerStaticInit1575b343e10f9ed3dbab02607478c391
         'CreateInfoTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_185246_create_info_table.php',
         'CreateIssuePRTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_192956_create_issuePR_table.php',
         'CreateIssueTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_183404_create_issue_table.php',
+        'CreateIssuesTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_12_210331_create_issues_table.php',
         'CreateListaUsurepo' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_000650_create_lista_usurepo.php',
         'CreatePullsTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_181933_create_pulls_table.php',
         'CreateRamasTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_182456_create_ramas_table.php',

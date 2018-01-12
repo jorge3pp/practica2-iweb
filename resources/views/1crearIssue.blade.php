@@ -4,6 +4,35 @@
 
 	<!-- INICIO Codigo Body de la página web -->
 
+
+    <h1 class="title m-b-md" align="center">Insertar datos del Issue a crear</h1>
+    <nav class="navbar navbar-default navbar-inverse container">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Barra de navegacion</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				
+				<!--<a class="navbar-brand" href="/">Inicio</a>-->
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+	
+					</ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+					
+						<li><a href="{{action('WebController@issueRepositorio', $valor)}}">VOLVER A LA PAGINA DE LOS ISSUES</a></li>
+					
+				</ul>
+			</div>
+		</div>
+	</nav>
+
 	@if (count($errors) > 0)
     <div id="Contenedor" style=" background-color:#F8E0E0; color:black; border-style: solid; border-color:#F6CECE; border-radius: 1em;">
         <b><strong>ERROR</strong> Han habido problemas con los datos introducidos<br><br>
@@ -15,8 +44,8 @@
     </div>
     @endif
 	
-	<h1 class="title m-b-md" align="left">Insertar datos del Issue a crear</h1>
-    <div>
+	
+    <div class="container">
 	<form method="POST">
 	{{ csrf_field() }}
 		<table width="400px" align="left">

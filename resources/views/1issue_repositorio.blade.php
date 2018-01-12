@@ -26,7 +26,10 @@
                         
                         @if(count($valores) > 0)
 						    <li><a href="{{action('WebController@issueRepositorioCerrados', $valores->get(0)->id_repo)}}">Cerrados</a></li>
+                            <li><a href="{{action('WebController@crearIssue', $valores->get(0)->id_repo)}}">Crear Issue</a></li>
                         @endif
+
+                        
 						
 					</ul>
 
@@ -34,6 +37,7 @@
 					@if(count($valores) > 0)
 						<li><a href="{{action('WebController@datosRepositorio', $valores->get(0)->id_repo)}}">VOLVER A LA PAGINA PRINCIPAL DEL REPOSITORIO</a></li>
                     @endif
+                    
 				</ul>
 			</div>
 		</div>
@@ -56,8 +60,8 @@
                     <tr>
                    
                         <td><a> {{ $valor->nombre }}</a> </td>
-                            <td><a href="{{action('WebController@datosRepositorio', $valores->get(0)->id_repo)}}"> Ver detalles </a></td>
-                            <td><a href="{{action('WebController@datosRepositorio', $valores->get(0)->id_repo)}}"> Cerrar Issue </a></td>
+                            <td><a href="{{action('WebController@detallesIssue', $valor->id)}}"> Ver detalles </a></td>
+                            <td><a href="{{action('WebController@cerrarIssue', $valor->id)}}"> Cerrar Issue </a></td>
                     </tr>
                    @endif
 
