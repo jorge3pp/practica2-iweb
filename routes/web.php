@@ -24,6 +24,7 @@ Route::get('/cuartelesp','WebController@cuartelesPublic');
 // MAS COSAS DE ESTA PRACTICA
 
 Route::get('/repositoriosp','WebController@repositoriosDestacados');
+Route::get('/repositoriosp/{id}','WebController@datosRepositorioPublico');
 
 // FIN DE ESTAS COSAS
 

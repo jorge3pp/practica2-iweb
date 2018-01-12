@@ -51,6 +51,17 @@ class WebController extends Controller
         return view('1repositoriosDestacados')->with('valores',$repositorios);
     }
 
+    public function datosRepositorioPublico($id) {
+        $user = \Auth::user();
+        $repositorio = DB::table('repositorios')->where('id',$id)->first();
+        if($repositorio->privPub == '1') {
+            return view('1datosRepositorioPublico')->with('valor',$repositorio);
+        }
+        else {
+            return view('error_permisos_repositorio');
+        }
+        
+    }
 
     // AQUI ACABA EL CODIGO NUEVO
 

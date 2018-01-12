@@ -23,7 +23,7 @@
             @foreach($valores as $valor)
                 
             <tr>
-                <td><a href="{{action('WebController@datosRepositorio', $valor->id)}}"> {{ $valor->nombre }}</a> </td>
+                <td><a href="{{action('WebController@datosRepositorioPublico', $valor->id)}}"> {{ $valor->nombre }}</a> </td>
                 <td> {{ $valor->administrador }} </td>
                 <td> {{ $valor->estrellas }} </td>    
             </tr> 
