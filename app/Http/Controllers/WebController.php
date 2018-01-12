@@ -45,14 +45,14 @@ class WebController extends Controller
         }
         
     }
-        
+
+    public function repositoriosDestacados() {
+        $repositorios = DB::table('repositorios')->where('privPub','1')->paginate(10);
+        return view('1repositoriosDestacados')->with('valores',$repositorios);
+    }
 
 
-
-
-
-
-    // AQUI EMPIEZA EL DE LA PRACTICA ANTERIOR AUNQUE HAY COSAS QUE VALEN O SEA QUE MUCHO OJO CABRON
+    // AQUI ACABA EL CODIGO NUEVO
 
 
 

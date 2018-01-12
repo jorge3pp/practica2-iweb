@@ -44,7 +44,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="/"><img src="/../Escudo Guardia Civil.jpg" width="30px" height="40px" alt="Logo"/></a>
+				<a href="/"><img src="/../icono.png" width="40px" height="40px" alt="Logo"/></a>
 				<!--<a class="navbar-brand" href="/">Inicio</a>-->
 			</div>
 
@@ -52,12 +52,13 @@
 				@if (Auth::guest())
 
 					<ul class="nav navbar-nav">
-						<li><a href="/cuartelesp">Cuarteles</a></li>
+						<li><a href="/repositoriosp">Repositorios destacados</a></li>
 					</ul>
 					
 				@else
 					<ul class="nav navbar-nav">
-						<li><a href="/repositorios">Repositorios</a></li>
+						<li><a href="/repositoriosp">Repositorios destacados</a></li>
+						<li><a href="/repositorios">Mis repositorios</a></li>
 					</ul>
 
 				@endif

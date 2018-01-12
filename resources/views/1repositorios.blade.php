@@ -32,11 +32,14 @@
 		</div>
 
         <div class="container">
+			{{$valores->links()}}
+		</div>
+        
+        <div class="container">
             <h1>Repositorios públicos</h1>
             <table class="table table-striped">
                 <tr>
                     <th>NOMBRE</th>
-                    <th>TIPO DE REPOSITORIO</th>
                 </tr>
                 @foreach($valores as $valor)
 
