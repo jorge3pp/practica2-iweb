@@ -20,6 +20,17 @@ Route::get('/','WebController@app');
 Route::get('/cuartelesp','WebController@cuartelesPublic');
 
 
+
+// MAS COSAS DE ESTA PRACTICA
+
+Route::get('/repositoriosp','WebController@repositoriosDestacados');
+Route::get('/repositoriosp/{id}','WebController@datosRepositorioPublico');
+//Route::get('/repositorios/{id}/issues','WebController@issueRepositorio');
+
+// FIN DE ESTAS COSAS
+
+
+
 Route::group(['middleware' => 'partePrivadaUser'], function() {
     Route::get('/denunciasp','WebController@denunciasPublic');
     Route::get('/usuariodenuncia/{id}','WebController@usuarioDenuncia');
@@ -40,13 +51,22 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     Route::get('/denunciasporagente/insertar','WebController@insertarDenunciaAgente');
     Route::post('/denunciasporagente/insertar','WebController@insertarDenunciaAgentePostear');
 
+
+
+
     //RUTAS NUEVAS
 
     Route::get('/repositorios','WebController@repositoriosUsuario');
-    Route::get('/repositorios/{id}','WebController@repositoriosUsuario');
+
+    Route::get('/repositorios/{id}','WebController@datosRepositorio');
+    Route::get('/repositorios/{id}/issues','WebController@issueRepositorio');
+    Route::get('/repositorios/{id}/issuescerrados','WebController@issueRepositorioCerrados');
 
     Route::get('/new','WebController@formNuevoProyecto');
     Route::post('/new','WebController@nuevoProyectoPostear');
+
+    //FIN DE ESTAS COSAS
+
 });
 
 Route::group(['middleware' => 'partePrivadaAdmin'], function() {

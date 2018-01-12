@@ -91,35 +91,22 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <img src="gcivil.png" width="110px" height="140px" alt="Logo"/>
+                    <img src="icono.png" width="140px" height="140px" alt="Logo"/>
                     <font color="green">NOESGITHUB</font>
                 </div>
 
                 <div class="links">
                     @if (Auth::guest())
 
-					    <a href="http://127.0.0.1:8000/cuartelesp">Cuarteles</a>
+					    <a href="http://127.0.0.1:8000/repositoriosp">Repositorios destacados</a>
 					
                     @else
                         @if(Auth::user()->email == 'Admin@admin.com')
-                            <a href="http://127.0.0.1:8000/agentes">Agentes</a>
-                            <a href="http://127.0.0.1:8000/cuarteles">Cuarteles</a>
-                            <a href="http://127.0.0.1:8000/denuncias">Denuncias</a>
-                            <a href="http://127.0.0.1:8000/tareas">Tareas</a>
-                            <a href="http://127.0.0.1:8000/usuarios">Usuarios</a>
-                            <a href="http://127.0.0.1:8000/insertar">Insertar datos</a>
-                            <a href="http://127.0.0.1:8000/search">Busqueda</a>
 
                         @else
-
-                            @if(Auth::user()->rol == '2')
-                                    <a href="http://127.0.0.1:8000/tareasporagente">Tareas</a>
-                                    <a href="http://127.0.0.1:8000/cuartelesporagente">Cuarteles</a>
-                                    <a href="http://127.0.0.1:8000/denunciasporagente">Denuncias</a>
-                            @else
-                                <a href="http://127.0.0.1:8000/cuartelesp">Cuarteles</a>
-                                <a href="http://127.0.0.1:8000/denunciasp">Denuncias</a>
-                                @endif
+                            <a href="http://127.0.0.1:8000/repositoriosp">Repositorios destacados</a>
+                            <a href="http://127.0.0.1:8000/repositorios">Mis repositorios</a>
+                            
                         @endif
                     @endif
                     

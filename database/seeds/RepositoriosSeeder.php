@@ -17,6 +17,12 @@ class RepositoriosSeeder extends Seeder
 
         DB::table('repositorios')->insert(['nombre' => 'IngenieriaWeb Mola','administrador' => $admin->id, 'estrellas'=> 0,
             'contador_seguidores' => 1 ]);
+        
+        DB::table('repositorios')->insert(['nombre' => 'Repositorio publico','administrador' => $admin->id, 'estrellas'=> 1234,
+            'contador_seguidores' => 123, 'privPub' => '1' ]);
+
+        DB::table('repositorios')->insert(['nombre' => 'Repositorio publico 2','administrador' => $admin->id, 'estrellas'=> 341,
+            'contador_seguidores' => 4, 'privPub' => '1' ]);
 
             /*
             Me va a tocar hacer una tabla aparte llamada lista_usuarios_repo y guardar ahi un usuario y un repositorio por tupla. Para hacer la lista

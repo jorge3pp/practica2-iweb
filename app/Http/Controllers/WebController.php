@@ -17,6 +17,131 @@ class WebController extends Controller
         return view('welcome');
     }
 
+
+
+
+
+
+
+
+    //AQUI VA NUESTRO CODIGO TT
+
+
+    public function repositoriosUsuario() {
+
+        $user = \Auth::user();
+        $repositorios = DB::table('repositorios')->where('administrador',$user->id)->paginate(10);
+        return view('1repositorios')->with('valores',$repositorios);
+    }
+
+    public function datosRepositorio($id) {
+        $user = \Auth::user();
+        
+        $repositorio = DB::table('repositorios')->where('id',$id)->first();
+        
+        if($repositorio->privPub == '0' && $repositorio->administrador == $user->id) {
+            return view('1datosRepositorio')->with('valor',$repositorio);
+        }
+        else {
+            return view('error_permisos_repositorio');
+        }
+        
+    }
+
+    public function repositoriosDestacados() {
+        $repositorios = DB::table('repositorios')->where('privPub','1')->paginate(10);
+        return view('1repositoriosDestacados')->with('valores',$repositorios);
+    }
+
+    public function datosRepositorioPublico($id) {
+        $user = \Auth::user();
+        $repositorio = DB::table('repositorios')->where('id',$id)->first();
+        if($repositorio->privPub == '1' || $repositorio->administrador == $user->id) {
+            return view('1datosRepositorioPublico')->with('valor',$repositorio);
+        }
+        else {
+            return view('error_permisos_repositorio');
+        }
+        
+    }
+
+    public function issueRepositorio($id) {
+        $issues = DB::table('issue')->where('id_repo',$id)->paginate(10);
+        return view('1issue_repositorio')->with('valores',$issues);
+
+    }
+
+    public function issueRepositorioCerrados($id) {
+        $issues = DB::table('issue')->where('id_repo',$id)->paginate(10);
+        return view('1issue_repositorio_cerrados')->with('valores',$issues);
+    }
+
+    // POVE
+    public function formNuevoProyecto(){
+        return view('formNuevoProyecto');
+    }
+
+    public function nuevoProyectoPostear(Request $request){
+        
+                //$id = (int)$_POST['id']; 
+                //$user = $_REQUEST['res'];
+        
+                $v = \Validator::make($request->all(),[
+                    'nombre' => 'required|max:255',
+                    'acceso' => 'required']);
+        
+                if ($v->fails()){
+                    return redirect()->back()->withInput()->withErrors($v->errors());
+                }
+                
+                $administrador = \Auth::user()->id;
+                $nombre = (string)$request->input('nombre');
+                $aux = (string)$request->input('acceso');
+
+                $acceso = -1;
+
+                if($aux == 'privado'){
+                    $acceso = 0;
+                }else if ($aux == 'publico') $acceso = 1;
+
+                $cuartel = (int)$request->input('cuartel');
+                
+                
+                try {
+                    $denuncia = new Denuncia;
+                    $denuncia->nombre = $nombre;
+                    $denuncia->motivo = $motivo;
+                    $denuncia->agente_id = $agente->id;
+                    $denuncia->user_id = $usuario;
+                    $denuncia->importe_multa = $importe;
+                    $denuncia->save();
+                    
+                   DB::table('denuncia_users')->insert(['denuncia_id' => $denuncia->id, 'user_id' => $usuario]);
+                
+
+                    DB::table('repositorios')->insert(['nombre'=>$nombre,'administrador'=>$administrador,'privPub'=>$acceso]);
+                    $user = User::where('email',$usuario_id)->first();
+                    $user->rol = 2; 
+                    $user->save();
+                    return view('1nuevoRepositorioPostear');
+                }
+                catch(\Exception $e) {
+                    return view('error');
+                }
+            }
+
+    // AQUI ACABA EL CODIGO NUEVO
+
+
+
+
+
+
+
+
+
+
+
     public function agentes() {
         $agentes = DB::table('agentes')->paginate(10);
         return view('agentes')->with('valores', $agentes);
@@ -884,56 +1009,4 @@ public function insertarDenunciaAgente(Request $request){
     /* IWEB ------------------------------------------------------------------------------------------------ */
 
 
-    public function formNuevoProyecto(){
-        return view('formNuevoProyecto');
-    }
-
-    public function nuevoProyectoPostear(Request $request){
-        
-                //$id = (int)$_POST['id']; 
-                //$user = $_REQUEST['res'];
-        
-                $v = \Validator::make($request->all(),[
-                    'nombre' => 'required|max:255',
-                    'acceso' => 'required']);
-        
-                if ($v->fails()){
-                    return redirect()->back()->withInput()->withErrors($v->errors());
-                }
-                
-                $administrador = \Auth::user()->id;
-                $nombre = (string)$request->input('nombre');
-                $aux = (string)$request->input('acceso');
-
-                $acceso = -1;
-
-                if($aux == 'privado'){
-                    $acceso = 0;
-                }else if ($aux == 'publico') $acceso = 1;
-
-                $cuartel = (int)$request->input('cuartel');
-                
-                
-                try {
-                    $denuncia = new Denuncia;
-                    $denuncia->nombre = $nombre;
-                    $denuncia->motivo = $motivo;
-                    $denuncia->agente_id = $agente->id;
-                    $denuncia->user_id = $usuario;
-                    $denuncia->importe_multa = $importe;
-                    $denuncia->save();
-                    
-                   DB::table('denuncia_users')->insert(['denuncia_id' => $denuncia->id, 'user_id' => $usuario]);
-                
-
-                    DB::table('repositorios')->insert(['nombre'=>$nombre,'administrador'=>$administrador,'privPub'=>$acceso]);
-                    $user = User::where('email',$usuario_id)->first();
-                    $user->rol = 2; 
-                    $user->save();
-                    return view('1nuevoRepositorioPostear');
-                }
-                catch(\Exception $e) {
-                    return view('error');
-                }
-            }
 }
