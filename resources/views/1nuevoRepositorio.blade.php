@@ -22,20 +22,19 @@
 		<table width="600px" align="left">
 			
 			<tr>
-                    <tr>
-                        <td align="left"><label for="nombre">Nombre del repositorio</label><input value="{{ old('nombre') }}" type="text" name="nombre" id="nombre">
-                    </tr>
-                   <tr>
-            <td align="left"><div class="form-group">
-
-            {{ Form::radio('acceso', 'privado', true) }}<br>
-            {{ Form::radio('acceso', 'publico' ) }}
-            </td>
-
-            <tr>
-            <input type="submit" value="Insertar agente"></td>
+                <tr>
+                    <td align="left"><label for="nombre">Nombre del repositorio</label><input value="{{ old('nombre') }}" type="text" name="nombre" id="nombre">
+                </tr>
+                <tr>
+                    <td align="left"><div class="form-group">
+                     <label><input type="radio" class="flat" name="acceso" value="Privado" checked >Privado</label>
+                     <label><input type="radio" class="flat" name="acceso" value="Publico" >Publico</label>
+                    </td>
+                </tr>
+                <tr>
+                    <input type="submit" value="Crear repositorio"></td>
+                </tr>
             </tr>
-
 		</table>
 	</form>
 

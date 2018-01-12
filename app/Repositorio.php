@@ -6,11 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Repositorio extends Model
 {
-    public function agente() {
-        return $this->belongsTo('App\Agente');
-    }
-
-    public function user() {
+    public function admin() {
         return $this->belongsTo('App\User');
     }
 

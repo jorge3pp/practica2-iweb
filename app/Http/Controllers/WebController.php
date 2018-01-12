@@ -78,7 +78,7 @@ class WebController extends Controller
 
     // POVE
     public function formNuevoProyecto(){
-        return view('formNuevoProyecto');
+        return view('1nuevoRepositorio');
     }
 
     public function nuevoProyectoPostear(Request $request){
@@ -103,26 +103,20 @@ class WebController extends Controller
                 if($aux == 'privado'){
                     $acceso = 0;
                 }else if ($aux == 'publico') $acceso = 1;
-
-                $cuartel = (int)$request->input('cuartel');
-                
                 
                 try {
-                    $denuncia = new Denuncia;
-                    $denuncia->nombre = $nombre;
-                    $denuncia->motivo = $motivo;
-                    $denuncia->agente_id = $agente->id;
-                    $denuncia->user_id = $usuario;
-                    $denuncia->importe_multa = $importe;
-                    $denuncia->save();
-                    
-                   DB::table('denuncia_users')->insert(['denuncia_id' => $denuncia->id, 'user_id' => $usuario]);
-                
+                    $repo = new Repositorio;
+                    $repo->nombre = $nombre;
+                    $repo->acceso = $acceso;
+                    $repo->administrador = $administrador;
+                    $repo->save();
 
                     DB::table('repositorios')->insert(['nombre'=>$nombre,'administrador'=>$administrador,'privPub'=>$acceso]);
-                    $user = User::where('email',$usuario_id)->first();
-                    $user->rol = 2; 
-                    $user->save();
+
+                    $r = Repositorio::where('nombre',$nombre)->first();
+
+                    DB::table('lista_usuarios_repo')->insert(['id_usuario' => $repo->administrador, 'id_repo' => $r->id]);
+
                     return view('1nuevoRepositorioPostear');
                 }
                 catch(\Exception $e) {
