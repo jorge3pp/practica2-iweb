@@ -85,7 +85,6 @@ class WebController extends Controller
         
                 //$id = (int)$_POST['id']; 
                 //$user = $_REQUEST['res'];
-        
                 $v = \Validator::make($request->all(),[
                     'nombre' => 'required|max:255',
                     'acceso' => 'required']);
@@ -96,16 +95,12 @@ class WebController extends Controller
                 
                 $administrador = \Auth::user()->id;
                 $nombre = (string)$request->input('nombre');
-                $aux = (string)$request->input('acceso');
+                $acceso = (int)$request->input('acceso');
 
-                $acceso = -1;
-
-                if($aux == 'privado'){
-                    $acceso = 0;
-                }else if ($aux == 'publico') $acceso = 1;
-                
                 try {
+                    dd('Aqui esta ek erriiririr!');
                     $repo = new Repositorio;
+                    dd('Got here!');
                     $repo->nombre = $nombre;
                     $repo->acceso = $acceso;
                     $repo->administrador = $administrador;

@@ -27,8 +27,8 @@
                 </tr>
                 <tr>
                     <td align="left"><div class="form-group">
-                     <label><input type="radio" class="flat" name="acceso" value="Privado" checked >Privado</label>
-                     <label><input type="radio" class="flat" name="acceso" value="Publico" >Publico</label>
+                     <label><input type="radio" class="flat" name="acceso" value="0" checked >Privado</label>
+                     <label><input type="radio" class="flat" name="acceso" value="1" >Publico</label>
                     </td>
                 </tr>
                 <tr>
