@@ -25,6 +25,7 @@ Route::get('/cuartelesp','WebController@cuartelesPublic');
 
 Route::get('/repositoriosp','WebController@repositoriosDestacados');
 Route::get('/repositoriosp/{id}','WebController@datosRepositorioPublico');
+//Route::get('/repositorios/{id}/issues','WebController@issueRepositorio');
 
 // FIN DE ESTAS COSAS
 
@@ -57,6 +58,7 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
 
     Route::get('/repositorios','WebController@repositoriosUsuario');
     Route::get('/repositorios/{id}','WebController@datosRepositorio');
+    Route::get('/repositorios/{id}/issues','WebController@issueRepositorio');
 
     //FIN DE ESTAS COSAS
 

@@ -1,29 +1,57 @@
-@extends('layouts.dentro_repositorio')
 @extends('layouts.app')
+
 @section('content')
 
 
 
 	<!-- INICIO Codigo Body de la página web -->	
-	
-	<h1 class="title m-b-md" align="center">Detalles del repositorio</h1>
+	<h1 align="center">Numero de Issues del repositorio: {{count($valores)}}</h1>
+    <nav class="navbar navbar-default navbar-inverse container">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Barra de navegacion</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				
+				<!--<a class="navbar-brand" href="/">Inicio</a>-->
+			</div>
 
-        <div class="container">
-            <h1>Nombre: {{ $valor->nombre }}</h1>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><a href="#">Abiertos</a></li>
+						<li><a href="#">Cerrados</a></li>
+						
+					</ul>
 
-            @if($valor->privPub == '0')
-            <p>Tipo de repositorio: PRIVADO</p>
+                    <ul class="nav navbar-nav navbar-right">
+					@if(count($valores) > 0)
+						<li><a href="{{action('WebController@datosRepositorio', $valores->get(0)->id_repo)}}">VOLVER A LA PAGINA PRINCIPAL DEL REPOSITORIO</a></li>
+					@endif
+				</ul>
+			</div>
+		</div>
+	</nav>
+    
+    <div class="container">
+    <h1>Publicos y privados (Por ahora eh)</h1>
+    <table class="table table-striped">
 
-            @else
-            <p>Tipo de repositorio: PÚBLICO</p>
-            @endif
-            
-            <pre class ="container">
-                Estrellas del repositorio: {{ $valor->estrellas }}
-                Contador seguidores: {{$valor->contador_seguidores}}
-            </pre>
-            <p><a>Modificar los datos u otra cosa</a></p>
-        </div>
+        @if(count($valores) < 0)
+            <h1>NO HAY ISSUES </h1>
+        @else
+            @foreach($valores as $valor)
+                
+            <tr>
+                <td><a> {{ $valor->nombre }}</a> </td>
+            </tr> 
+
+            @endforeach
+        @endif
+    </table>
+</div>
 
 
 		
