@@ -7,6 +7,7 @@ use App\Agente;
 use App\Cuartel;
 use App\Denuncia;
 use App\User;
+use App\Repositorio;
 use App\Tarea;
 use DB;
 use Riazxrazor\LaravelSweetAlert\LaravelSweetAlert;
@@ -98,9 +99,7 @@ class WebController extends Controller
                 $acceso = (int)$request->input('acceso');
 
                 try {
-                    dd('Aqui esta ek erriiririr!');
                     $repo = new Repositorio;
-                    dd('Got here!');
                     $repo->nombre = $nombre;
                     $repo->acceso = $acceso;
                     $repo->administrador = $administrador;
