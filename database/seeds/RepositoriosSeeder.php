@@ -16,7 +16,7 @@ class RepositoriosSeeder extends Seeder
         $admin = DB::table('users')->where('email','pedroantonino123@gmail.com')->first();
 
         DB::table('repositorios')->insert(['nombre' => 'IngenieriaWeb Mola','administrador' => $admin->id, 'estrellas'=> 0,
-            'contador_seguidores' => 1 ]);
+            'contador_seguidores' => 1, 'privPub' => '0' ]);
         
         DB::table('repositorios')->insert(['nombre' => 'Repositorio publico','administrador' => $admin->id, 'estrellas'=> 1234,
             'contador_seguidores' => 123, 'privPub' => '1' ]);

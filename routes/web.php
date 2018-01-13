@@ -57,6 +57,7 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     //RUTAS NUEVAS
 
     Route::get('/repositorios','WebController@repositoriosUsuario');
+
     Route::get('/repositorios/{id}','WebController@datosRepositorio');
     Route::get('/repositorios/{id}/issues','WebController@issueRepositorio');
     Route::get('/repositorios/{id}/issuescerrados','WebController@issueRepositorioCerrados');
@@ -66,10 +67,11 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     Route::get('/repositorios/{id}/issue/cerrarissue','WebController@cerrarIssue');
     Route::get('/repositorios/issue/{id}','WebController@detallesIssue');
 
+    Route::get('/new','WebController@formNuevoProyecto');
+    Route::post('/new','WebController@nuevoProyectoPostear');
+
     //FIN DE ESTAS COSAS
 
-    
-    
 });
 
 Route::group(['middleware' => 'partePrivadaAdmin'], function() {

@@ -7,6 +7,7 @@ use App\Agente;
 use App\Cuartel;
 use App\Denuncia;
 use App\User;
+use App\Repositorio;
 use App\Tarea;
 use App\Issue;
 use DB;
@@ -22,8 +23,9 @@ class WebController extends Controller
     //AQUI VA NUESTRO CODIGO TT
 
 
-    public function repositoriosUsuario() {
 
+    public function repositoriosUsuario() {
+        
         $user = \Auth::user();
         $repositorios = DB::table('repositorios')->where('administrador',$user->id)->paginate(10);
         return view('1repositorios')->with('valores',$repositorios);
@@ -71,7 +73,6 @@ class WebController extends Controller
         $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
         return view('1issue_repositorio_cerrados')->with('valores',$issues);
     }
-
 
     public function crearIssue(Request $request, $id){
         return view ('1crearIssue')->with('valor',$id);
@@ -126,11 +127,56 @@ class WebController extends Controller
         return view('1detallesIssue')->with('valor',$issue);
     }
    
+  
+    public function formNuevoProyecto(){
+        return view('1nuevoRepositorio');
+    }
 
+    public function nuevoProyectoPostear(Request $request){
+        
+                //$id = (int)$_POST['id']; 
+                //$user = $_REQUEST['res'];
+                $v = \Validator::make($request->all(),[
+                    'nombre' => 'required|max:255',
+                    'acceso' => 'required']);
+        
+                if ($v->fails()){
+                    return redirect()->back()->withInput()->withErrors($v->errors());
+                }
+                
+                $administrador = \Auth::user()->id;
+                $nombre = (string)$request->input('nombre');
+                $acceso = (int)$request->input('acceso');
 
+                try {
+                    $repo = new Repositorio;
+                    $repo->nombre = $nombre;
+                    $repo->privPub = $acceso;
+                    $repo->administrador = $administrador;
+                    $repo->save();
+/*
 
+                    $user = User::find($administrador);
 
+                    $repo = new Repositorio;
+                    $repo->nombre = $nombre;
+                    $repo->privPub = $acceso;
+                    $repo->administrador = $administrador;
+                    $user->repositories()->save($repo);
 
+                    DB::table('repositorios')->insert(['nombre'=>$nombre,'administrador'=>$administrador,'privPub'=>$acceso]);
+
+                    $r = Repositorio::where('nombre',$nombre)->where('administrador',$administrador)->where('privPub',$acceso)->first();
+
+                    DB::table('lista_usuarios_repo')->insert(['id_usuario' => $administrador, 'id_repo' => $r->id]);
+
+*/
+                    return view('1nuevoRepositorioPostear');
+                }
+                catch(\Exception $e) {
+                    return view('error');
+                }
+            }
 
     // AQUI ACABA EL CODIGO NUEVO
 
@@ -1000,8 +1046,6 @@ public function insertarDenunciaAgente(Request $request){
             return view('error');
         }
     }
-
-    
     public function denunciasAgente()
     {
         $agente = Agente::where('user_id',\Auth::user()->email)->first();
@@ -1009,5 +1053,8 @@ public function insertarDenunciaAgente(Request $request){
         return view('denunciasporagente')->with('valores',$denuncias);
     }
     
+
+    /* IWEB ------------------------------------------------------------------------------------------------ */
+
 
 }
