@@ -69,8 +69,10 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
 
     Route::get('/repositorios/{id}/pullrequests','WebController@pullrequestRepositorio');
     Route::get('/repositorios/{id}/pullrequestscerrados','WebController@pullrequestRepositorioCerrados');
-    Route::get('/repositorios/{id}/issue/crearpullrequest','WebController@crearPullrequest');
-    Route::post('/repositorios/{id}/issue/crearpullrequest','WebController@crearPullrequestPostear');
+    Route::get('/repositorios/{id}/pullrequest/crearpullrequest','WebController@crearPullrequest');
+    Route::post('/repositorios/{id}/pullrequest/crearpullrequest','WebController@crearPullrequestPostear');
+    Route::get('/repositorios/{id}/pullrequest/cerrarpullrequest','WebController@cerrarPullrequest');
+    Route::post('/repositorios/{id}/pullrequest/cerrarpullrequest','WebController@cerrarPullrequestPostear');
 
     Route::get('/new','WebController@formNuevoProyecto');
     Route::post('/new','WebController@nuevoProyectoPostear');

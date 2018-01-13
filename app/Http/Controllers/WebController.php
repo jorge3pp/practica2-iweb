@@ -10,6 +10,7 @@ use App\User;
 use App\Repositorio;
 use App\Tarea;
 use App\Issue;
+use App\PR;
 use DB;
 use Riazxrazor\LaravelSweetAlert\LaravelSweetAlert;
 
@@ -128,6 +129,80 @@ class WebController extends Controller
 
         }
     }
+    
+    
+
+    public function cerrarPullrequest($id){
+        $issues = Issue::all();
+        $pulls = DB::table('p_rs')->where('id',$id)->paginate(10);
+        return view('1cerrarPullrequest')->with('valores',$pulls)->with('issues',$issues);
+    }
+    
+    public function cerrarPullrequestPostear($id)  {
+        //
+        //$cuartel = (int)$request->input('cuartel');
+
+        try {
+            $issueaux = (string)$request->input('issue');
+            /*
+            
+            $issue = Issue::where('id',$issueaux);
+            $issue->update(['estado'=>'cerrado']);
+
+            $pull = PR::where('id',$id);
+            $pull->update(['estado'=>'cerrado']);
+
+            LaravelSweetAlert::setMessageSuccess("El PR seleccionado ha sido cerrado correctamente");*/
+            return view('error');
+
+        }
+        catch(\Exception $e) {
+            /*
+            $pr = PR::where('id',$id);
+            $pr->update(['estado'=>'cerrado']);
+
+            LaravelSweetAlert::setMessageSuccess("El PR seleccionado ha sido cerrado correctamente");*/
+            abort(500);
+        }
+
+    }
+    
+
+    /*
+    public function insertarAgentePostear(Request $request){
+
+        //$id = (int)$_POST['id']; 
+        //$user = $_REQUEST['res'];
+
+        $v = \Validator::make($request->all(),['id' => 'required|integer|unique:agentes',
+        'nombre' => 'required|max:255','cuartel' => 'required|max:4|exists:cuartels,id',
+        'usuario_id' => 'required|max:100|exists:users,email']);
+
+        if ($v->fails()){
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+
+        $id = (int)$request->input('id');
+
+        $nombre = (string)$request->input('nombre');
+        $cuartel = (int)$request->input('cuartel');
+        $usuario_id = (string)$request->input('usuario_id');
+        
+        try {
+            if($id==0) throw new \Exception();
+            DB::table('agentes')->insert(['id' => $id,'nombre'=>$nombre,'cuartel_id'=>$cuartel,'user_id'=>$usuario_id]);
+            $user = User::where('email',$usuario_id)->first();
+            $user->rol = 2; 
+            $user->save();
+            return view('insertarAgentePostear');
+        }
+        catch(\Exception $e) {
+            return view('error');
+        }
+    }
+    */
+
+
 
 
     public function detallesIssue($id) {

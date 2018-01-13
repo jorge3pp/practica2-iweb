@@ -51,7 +51,7 @@
     <table class="table table-striped">
 
         @if(count($valores) <= 0)
-            <h1>NO HAY ISSUES </h1>
+            <h1>NO HAY ISSUES CREADOS</h1>
         @else
 
             @foreach($valores as $valor)

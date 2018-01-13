@@ -20,7 +20,6 @@
 	<form method="POST">
 	{{ csrf_field() }}
 		<table width="600px" align="left">
-			
 			<tr>
 			    <tr>
 				    <td align="left"><label for="id">ID de la placa</label><input value="{{ old('id') }}" type="text" name="id" id="id">
@@ -30,27 +29,28 @@
                         <td align="left"><label for="nombre">Nombre del agente</label><input value="{{ old('nombre') }}" type="text" name="nombre" id="nombre">
                     </tr>
                    <tr>
-            <td align="left"><div class="form-group">
-
-
-            <label for="">Cuartel</label>
-            <select name="cuartel" id="cuartel" class="form-control">
-                <option value "">--Escoja el cuartel--</option>
-                @foreach($valores as $valor)       
-                    <option value ="{{$valor->id}}"> {{$valor->nombre}} </option>
-                @endforeach
-            </select> </div></td></tr>
-                  
-            <tr> <td align="left"><div class="form-group">
-            <label for="">Usuario</label>
-            <select name="usuario_id" id="usuario_id" class="form-control">
-                <option value "">--Escoja el cuartel--</option>
-                @foreach($valors as $valora)       
-                    <option value ="{{$valora->email}}"> {{$valora->name}} </option>
-                @endforeach
-            </select>
-        </div></td></tr>
-				<input type="submit" value="Insertar agente"></td>
+                        <td align="left">
+                            <div class="form-group">
+                                <label for="">Cuartel</label>
+                                <select name="cuartel" id="cuartel" class="form-control">
+                                    <option value "">--Escoja el cuartel--</option>
+                                    @foreach($valores as $valor)       
+                                        <option value ="{{$valor->id}}"> {{$valor->nombre}} </option>
+                                    @endforeach
+                                </select> </div></td></tr>
+                                    
+                                <tr> <td align="left"><div class="form-group">
+                                <label for="">Usuario</label>
+                                <select name="usuario_id" id="usuario_id" class="form-control">
+                                    <option value "">--Escoja el cuartel--</option>
+                                    @foreach($valors as $valora)       
+                                        <option value ="{{$valora->email}}"> {{$valora->name}} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                <input type="submit" value="Insertar agente"></td>
 			    
             </tr>
             
