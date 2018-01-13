@@ -20,7 +20,15 @@
 			background: -o-linear-gradient(left, #8AF3F9, white);
 			background: linear-gradient(left, #8AF3F9, white);
 		}
-
+		
+		.wiki-rightbar {
+			float: right;
+			width: 230px;
+		}
+		.wiki-body .markdown-body {
+			padding: 0 30px;
+			margin: 0 -30px;
+		}
 		
 	</style>
 	

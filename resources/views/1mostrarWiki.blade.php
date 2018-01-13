@@ -5,7 +5,7 @@
 
 
 	<!-- INICIO Codigo Body de la página web -->	
-	<h1 align="center">Nombre del repositorio: {{ $valor->nombre }}</h1>
+	<h1 align="center">Wiki</h1>
 	
     <nav class="navbar navbar-default navbar-inverse container">
 		<div class="container-fluid">
@@ -20,25 +20,6 @@
 				<!--<a class="navbar-brand" href="/">Inicio</a>-->
 			</div>
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				@if (Auth::guest())
-
-					<ul class="nav navbar-nav">
-						<li><a href="/repositoriosp">Repositorios destacados</a></li>
-					</ul>
-					
-				@else
-					<ul class="nav navbar-nav">
-						<li><a href="{{action('WebController@issueRepositorio', $valor->id)}}">Issues</a></li>
-						<li><a href="#">Pull Requests</a></li>
-						<li><a href="{{action('WebController@crearIssue', $valor->id)}}">Crear Issue</a></li>
-						<li><a href="{{action('WebController@mostrarWiki', $valor->id)}}">Wiki</a></li>
-                        
-						
-					</ul>
-
-				@endif
-
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 						<li><a href="login">Iniciar sesión</a></li>
@@ -51,26 +32,12 @@
 		</div>
 	</nav>
     
-        <div class="container">
-            
-
-            @if($valor->privPub == '0')
-            <p>Tipo de repositorio: PRIVADO</p>
-
-            @else
-            <p>Se trata de un repositorio público</p>
-            @endif
-            
+        <div class="wiki-body">
+            <h3 align="center">Nombre del repositorio: {{ $valor->nombre }}</h3>
             <pre class ="container">
-                Estrellas del repositorio: {{ $valor->estrellas }}
-                Contador seguidores: {{$valor->contador_seguidores}}
+                {{ $wiki->contenido }}
             </pre>
-            <p><a>Modificar los datos u otra cosa</a></p>
         </div>
-
-
-		
-		
 
 	<!-- FIN Codigo Body de la página web -->
 	
