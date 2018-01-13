@@ -15,7 +15,9 @@ class CreateWikiTable extends Migration
     {
         Schema::create('wiki', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
+            $table->integer('id_repo')->unique();
+            $table->foreign('id_repo')->references('id')->on('repositorios');
+
             $table->string('milestones');
             $table->string('clone-link');
             $table->string('contenido');

@@ -30,5 +30,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ListaUsuariosRepoSeeder::class);
         $this->command->info('Seeder de ListaUsuariosRepo ejecutado');
+
+
+        $this->call(WikiSeeder::class);
+        $this->command->info('Seeder de Wikis ejecutado');
+
+        $this->call(WikiPagesSeeder::class);
+        $this->command->info('Seeder de Paginas de wikis ejecutado');
     }
 }

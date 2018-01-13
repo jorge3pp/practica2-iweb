@@ -32,7 +32,11 @@
 						<li><a href="{{action('WebController@issueRepositorio', $valor->id)}}">Issues</a></li>
 						<li><a href="{{action('WebController@pullrequestRepositorio', $valor->id)}}">Pull Requests</a></li>
 						<li><a href="{{action('WebController@crearIssue', $valor->id)}}">Crear Issue</a></li>
+<<<<<<< HEAD
 						<li><a href="{{action('WebController@crearPullrequest', $valor->id)}}">Crear Pull Request</a></li>
+=======
+						<li><a href="{{action('WebController@mostrarWiki', $valor->id)}}">Wiki</a></li>
+>>>>>>> d8cdd5fda671a5a403b3eed2f72668a8284c5b1a
                         
 						
 					</ul>
