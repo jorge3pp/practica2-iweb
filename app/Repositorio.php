@@ -13,4 +13,10 @@ class Repositorio extends Model
     public function userMany() {
         return $this->belongsToMany('App\User');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User')
+          ->withTimestamps();
+    }
 }

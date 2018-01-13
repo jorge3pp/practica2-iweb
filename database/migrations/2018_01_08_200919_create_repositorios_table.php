@@ -21,7 +21,7 @@ class CreateRepositoriosTable extends Migration
             $table->integer('contador_seguidores')->default(1);
             // privPub == 0 se trata de un repo privado
             // privPub == 1 se trata de un repo publico
-            $table->integer('privPub')->default(0);
+            $table->integer('privPub');
             $table->foreign('administrador')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

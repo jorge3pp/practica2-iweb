@@ -14,11 +14,10 @@ class CreateListaUsurepo extends Migration
     public function up()
     {
         Schema::create('lista_usuarios_repo', function (Blueprint $table) {
-            $table->integer('id_usuario');
-            $table->integer('id_repo');
-            $table->foreign('id_usuario')->references('id')->on('users');
-            $table->foreign('id_repo')->references('id')->on('repositorios');
-            $table->primary('id_usuario','id_repo');
+            $table->integer('id_usuario')->unsigned()->nullable();;
+            $table->integer('id_repo')->unsigned()->nullable();;
+            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_repo')->references('id')->on('repositorios')->onDelete('cascade');
             $table->timestamps();
         });
     }

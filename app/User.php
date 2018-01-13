@@ -38,4 +38,10 @@ class User extends Authenticatable
     public function denunciaMany() {
         return $this->belongsToMany('App\Denuncia');
     }
+
+    public function repositories()
+    {
+        return $this->belongsToMany('App\Repositorio')
+          ->withTimestamps();
+    }
 }

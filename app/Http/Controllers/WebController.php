@@ -28,8 +28,9 @@ class WebController extends Controller
     //AQUI VA NUESTRO CODIGO TT
 
 
-    public function repositoriosUsuario() {
 
+    public function repositoriosUsuario() {
+        
         $user = \Auth::user();
         $repositorios = DB::table('repositorios')->where('administrador',$user->id)->paginate(10);
         return view('1repositorios')->with('valores',$repositorios);
@@ -101,16 +102,26 @@ class WebController extends Controller
                 try {
                     $repo = new Repositorio;
                     $repo->nombre = $nombre;
-                    $repo->acceso = $acceso;
+                    $repo->privPub = $acceso;
                     $repo->administrador = $administrador;
                     $repo->save();
+/*
+
+                    $user = User::find($administrador);
+
+                    $repo = new Repositorio;
+                    $repo->nombre = $nombre;
+                    $repo->privPub = $acceso;
+                    $repo->administrador = $administrador;
+                    $user->repositories()->save($repo);
 
                     DB::table('repositorios')->insert(['nombre'=>$nombre,'administrador'=>$administrador,'privPub'=>$acceso]);
 
-                    $r = Repositorio::where('nombre',$nombre)->first();
+                    $r = Repositorio::where('nombre',$nombre)->where('administrador',$administrador)->where('privPub',$acceso)->first();
 
-                    DB::table('lista_usuarios_repo')->insert(['id_usuario' => $repo->administrador, 'id_repo' => $r->id]);
+                    DB::table('lista_usuarios_repo')->insert(['id_usuario' => $administrador, 'id_repo' => $r->id]);
 
+*/
                     return view('1nuevoRepositorioPostear');
                 }
                 catch(\Exception $e) {
