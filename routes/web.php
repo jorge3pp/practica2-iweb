@@ -70,6 +70,9 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     Route::get('/new','WebController@formNuevoProyecto');
     Route::post('/new','WebController@nuevoProyectoPostear');
 
+    Route::get('/repositorios/{id}/wiki','WebController@mostrarWiki');
+    Route::get('/repositorios/{id}/wiki/{page}','WebController@detallesWikiPage');
+
     //FIN DE ESTAS COSAS
 
 });

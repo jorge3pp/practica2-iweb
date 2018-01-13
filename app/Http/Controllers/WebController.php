@@ -178,6 +178,19 @@ class WebController extends Controller
                 }
             }
 
+            
+    public function mostrarWiki($id) {
+        $wiki = DB::table('wiki')->where('id_repo',$id)->first();
+        $repositorio = DB::table('repositorios')->where('id',$id)->first();
+        return view('1mostrarWiki')->with('wiki',$wiki)->with('valor',$repositorio);
+    }
+
+    public function detallesWikiPage($id,$page) {
+        $issue = DB::table('issues')->where('id',$id)->first();
+        return view('1detallesIssue')->with('valor',$issue);
+    }
+    
+
     // AQUI ACABA EL CODIGO NUEVO
 
 
