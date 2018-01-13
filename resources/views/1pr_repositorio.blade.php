@@ -59,7 +59,7 @@
                     <tr>
                    
                         <td><a> {{ $valor->nombre }}</a> </td>
-                            <td><a href="{{action('WebController@detallesIssue', $valor->id)}}"> Ver detalles </a></td>
+							<td><a href="{{action('WebController@detallesPullrequest', $valor->id)}}"> Ver detalles </a></td>
                             <td><a href="{{action('WebController@cerrarPullrequest', $valor->id)}}"> Cerrar Pull Request </a></td>
                     </tr>
                    @endif

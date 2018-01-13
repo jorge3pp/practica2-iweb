@@ -58,6 +58,7 @@
             @if($valor->estado == 'cerrado')
 				<tr>
 					<td><a> {{ $valor->nombre }}</a> </td>
+					<td><a href="{{action('WebController@detallesPullrequestCerrado', $valor->id)}}"> Ver detalles </a></td>
 				</tr> 
 			@endif
             @endforeach

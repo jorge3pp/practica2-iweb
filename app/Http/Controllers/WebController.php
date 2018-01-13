@@ -146,6 +146,8 @@ class WebController extends Controller
             $issue->update(['estado'=>'cerrado']);
 
             DB::table('p_rs')->where('id', $id)->update(['estado' => 'cerrado']);
+            DB::table('p_rs')->where('id', $id)->update(['id_issue' => $issueaux]);
+
             LaravelSweetAlert::setMessageSuccess("El PR seleccionado ha sido cerrado correctamente");
             return view('cerrarPullrequestPostear');
 
@@ -161,49 +163,22 @@ class WebController extends Controller
     }
     
 
-    /*
-    public function insertarAgentePostear(Request $request){
-
-        //$id = (int)$_POST['id']; 
-        //$user = $_REQUEST['res'];
-
-        $v = \Validator::make($request->all(),['id' => 'required|integer|unique:agentes',
-        'nombre' => 'required|max:255','cuartel' => 'required|max:4|exists:cuartels,id',
-        'usuario_id' => 'required|max:100|exists:users,email']);
-
-        if ($v->fails()){
-            return redirect()->back()->withInput()->withErrors($v->errors());
-        }
-
-        $id = (int)$request->input('id');
-
-        $nombre = (string)$request->input('nombre');
-        $cuartel = (int)$request->input('cuartel');
-        $usuario_id = (string)$request->input('usuario_id');
-        
-        try {
-            if($id==0) throw new \Exception();
-            DB::table('agentes')->insert(['id' => $id,'nombre'=>$nombre,'cuartel_id'=>$cuartel,'user_id'=>$usuario_id]);
-            $user = User::where('email',$usuario_id)->first();
-            $user->rol = 2; 
-            $user->save();
-            return view('insertarAgentePostear');
-        }
-        catch(\Exception $e) {
-            return view('error');
-        }
-    }
-    */
-
-
-
 
     public function detallesIssue($id) {
         $issue = DB::table('issues')->where('id',$id)->first();
         return view('1detallesIssue')->with('valor',$issue);
     }
 
+    public function detallesPullrequest($id) {
+        $pull = DB::table('p_rs')->where('id',$id)->first();
+        return view('1detallesPullrequest')->with('valor',$pull);
+    }
 
+    public function detallesPullrequestCerrado($id) {
+        $pull = DB::table('p_rs')->where('id',$id)->first();
+        $issue = Issue::where('id',$pull->id_issue);
+        return view('1detallesPullrequestCerrado')->with('valor',$pull)->with('valors',$issue);
+    }
     
     public function pullrequestRepositorio($id) {
         $pulls = DB::table('p_rs')->where('id_repo',$id)->paginate(10);
