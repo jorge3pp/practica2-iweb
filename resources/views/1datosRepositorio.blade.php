@@ -30,8 +30,9 @@
 				@else
 					<ul class="nav navbar-nav">
 						<li><a href="{{action('WebController@issueRepositorio', $valor->id)}}">Issues</a></li>
-						<li><a href="#">Pull Requests</a></li>
+						<li><a href="{{action('WebController@pullrequestRepositorio', $valor->id)}}">Pull Requests</a></li>
 						<li><a href="{{action('WebController@crearIssue', $valor->id)}}">Crear Issue</a></li>
+						<li><a href="{{action('WebController@crearPullrequest', $valor->id)}}">Crear Pull Request</a></li>
                         
 						
 					</ul>

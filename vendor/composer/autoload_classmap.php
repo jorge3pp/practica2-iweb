@@ -29,6 +29,7 @@ return array(
     'CreateIssueTable' => $baseDir . '/database/migrations/2018_01_11_183404_create_issue_table.php',
     'CreateIssuesTable' => $baseDir . '/database/migrations/2018_01_12_210331_create_issues_table.php',
     'CreateListaUsurepo' => $baseDir . '/database/migrations/2018_01_11_000650_create_lista_usurepo.php',
+    'CreatePRsTable' => $baseDir . '/database/migrations/2018_01_13_185949_create_p_rs_table.php',
     'CreatePullsTable' => $baseDir . '/database/migrations/2018_01_11_181933_create_pulls_table.php',
     'CreateRamasTable' => $baseDir . '/database/migrations/2018_01_11_182456_create_ramas_table.php',
     'CreateReleaseTable' => $baseDir . '/database/migrations/2018_01_11_183833_create_release_table.php',

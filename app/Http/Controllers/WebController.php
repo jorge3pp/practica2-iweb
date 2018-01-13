@@ -134,6 +134,56 @@ class WebController extends Controller
         $issue = DB::table('issues')->where('id',$id)->first();
         return view('1detallesIssue')->with('valor',$issue);
     }
+
+
+    
+    public function pullrequestRepositorio($id) {
+        $pulls = DB::table('p_rs')->where('id_repo',$id)->paginate(10);
+        return view('1pr_repositorio')->with('valores',$pulls);
+    }
+
+    public function pullrequestRepositorioCerrados($id) {
+        $pulls = DB::table('p_rs')->where('id_repo',$id)->paginate(10);
+        return view('1pr_repositorio_cerrados')->with('valores',$pulls);
+    }
+
+    public function crearPullrequest(Request $request, $id){
+        $user = \Auth::user();
+        $repositorio = DB::table('repositorios')->where('id',$id)->first();
+        if($repositorio->administrador == $user->id) {
+            return view ('1crearPullrequest')->with('valor',$id);
+        }
+        else {
+            return view('error_permisos_repositorio');
+        }
+        
+    }
+
+    
+    
+    public function crearPullrequestPostear(Request $request, $id){
+        $user = \Auth::user();
+
+        $v = \Validator::make($request->all(),['nombre' => 'required|max:100',
+        'descripcion' => 'required|max:500']);
+
+        if ($v->fails()){
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+        
+        $nombre = (string)$request->input('nombre');
+        $descripcion = (string)$request->input('descripcion');
+
+        try{
+            DB::table('p_rs')->insert(['nombre'=>$nombre,'estado' => 'abierto', 'descripcion'=>$descripcion,'id_usuario'=>$user->id, 'id_repo' => $id, 'id_issue' => '0']);
+            return view('insertarPullrequestPostear');
+
+        }catch(\Exception $e) {
+            return view('error');
+        }
+    }
+
+
    
   
     public function formNuevoProyecto(){
