@@ -9,6 +9,7 @@ use App\Denuncia;
 use App\User;
 use App\Repositorio;
 use App\Tarea;
+use App\Issue;
 use DB;
 use Riazxrazor\LaravelSweetAlert\LaravelSweetAlert;
 
@@ -17,12 +18,6 @@ class WebController extends Controller
     public function app(){
         return view('welcome');
     }
-
-
-
-
-
-
 
 
     //AQUI VA NUESTRO CODIGO TT
@@ -58,6 +53,7 @@ class WebController extends Controller
     public function datosRepositorioPublico($id) {
         $user = \Auth::user();
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
+        $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
         if($repositorio->privPub == '1' || $repositorio->administrador == $user->id) {
             return view('1datosRepositorioPublico')->with('valor',$repositorio);
         }
@@ -68,17 +64,70 @@ class WebController extends Controller
     }
 
     public function issueRepositorio($id) {
-        $issues = DB::table('issue')->where('id_repo',$id)->paginate(10);
+        $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
         return view('1issue_repositorio')->with('valores',$issues);
 
     }
 
     public function issueRepositorioCerrados($id) {
-        $issues = DB::table('issue')->where('id_repo',$id)->paginate(10);
+        $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
         return view('1issue_repositorio_cerrados')->with('valores',$issues);
     }
 
-    // POVE
+    public function crearIssue(Request $request, $id){
+        return view ('1crearIssue')->with('valor',$id);
+    }
+
+    public function crearIssuePostear(Request $request, $id){
+        $user = \Auth::user();
+
+        $v = \Validator::make($request->all(),['nombre' => 'required|max:100',
+        'descripcion' => 'required|max:500']);
+
+        if ($v->fails()){
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+        
+        $nombre = (string)$request->input('nombre');
+        $descripcion = (string)$request->input('descripcion');
+
+        try{
+            DB::table('issues')->insert(['nombre'=>$nombre,'estado' => 'abierto', 'descripcion'=>$descripcion,'id_usuario'=>$user->id, 'id_repo' => $id]);
+            return view('insertarIssuePostear');
+
+        }catch(\Exception $e) {
+            return view('error');
+        }
+    }
+
+
+    public function cerrarIssue($id){
+        
+        try{
+            
+            $estado = 'cerrado';
+            $issue = Issue::where('id',$id);
+            $issue->update(['estado'=>'cerrado']);
+            
+            LaravelSweetAlert::setMessageSuccess("El Issue seleccionado ha sido cerrado correctamente");
+            
+            $issueaux = DB::table('issues')->where('id',$id)->first();
+            $issues = DB::table('issues')->where('id_repo',$issueaux->id_repo)->paginate(10);
+            return view('1issue_repositorio_cerrados')->with('valores',$issues);
+        
+        }
+        catch(\Exception $e) {
+
+        }
+    }
+
+
+    public function detallesIssue($id) {
+        $issue = DB::table('issues')->where('id',$id)->first();
+        return view('1detallesIssue')->with('valor',$issue);
+    }
+   
+  
     public function formNuevoProyecto(){
         return view('1nuevoRepositorio');
     }

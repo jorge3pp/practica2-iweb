@@ -31,6 +31,7 @@
 					<ul class="nav navbar-nav">
 						<li><a href="{{action('WebController@issueRepositorio', $valor->id)}}">Issues</a></li>
 						<li><a href="#">Pull Requests</a></li>
+                        
 						
 					</ul>
 

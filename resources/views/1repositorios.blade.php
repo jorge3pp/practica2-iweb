@@ -9,46 +9,49 @@
 		<div class="container">
 			{{$valores->links()}}
 		</div>
+        @if(count($valores) > 0)
+            <div class="container">
+                <h1>Repositorios privados</h1>
+                <table class="table table-striped">
 
-        <div class="container">
-            <h1>Repositorios privados</h1>
-            <table class="table table-striped">
+                    @foreach($valores as $valor)
 
-                @foreach($valores as $valor)
+                        
+                    <tr>
+                        @if($valor->privPub == '0')
+                        <td><a href="{{action('WebController@datosRepositorio', $valor->id)}}"> {{ $valor->nombre }}</a> </td>
+                        @endif
+                        
+                    </tr> 
 
-                    
-                <tr>
-                    @if($valor->privPub == '0')
-                    <td><a href="{{action('WebController@datosRepositorio', $valor->id)}}"> {{ $valor->nombre }}</a> </td>
-                    @endif
-                    
-                </tr> 
+                    @endforeach
+                </table>
+            </div>
 
-                @endforeach
-            </table>
-		</div>
+            <div class="container">
+                {{$valores->links()}}
+            </div>
+            
+            <div class="container">
+                <h1>Repositorios públicos</h1>
+                <table class="table table-striped">
 
-        <div class="container">
-			{{$valores->links()}}
-		</div>
-        
-        <div class="container">
-            <h1>Repositorios públicos</h1>
-            <table class="table table-striped">
+                    @foreach($valores as $valor)
 
-                @foreach($valores as $valor)
+                        
+                    <tr>
+                        @if($valor->privPub == '1')
+                        <td><a href="{{action('WebController@datosRepositorioPublico', $valor->id)}}"> {{ $valor->nombre }}</a> </td>
+                        @endif
+                        
+                    </tr> 
 
-                    
-                <tr>
-                    @if($valor->privPub == '1')
-                    <td><a href="{{action('WebController@datosRepositorioPublico', $valor->id)}}"> {{ $valor->nombre }}</a> </td>
-                    @endif
-                    
-                </tr> 
-
-                @endforeach
-            </table>
-        </div>
+                    @endforeach
+                </table>
+            </div>
+        @else
+            <h1 align="center"> NO FORMAS PARTE DE NINGÚN REPOSITORIO</h1>
+        @endif
 
 		
 		

@@ -11,12 +11,15 @@ class IssueSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('issue')->delete();
+        DB::table('issues')->delete();
         
         $admin = DB::table('users')->where('email','pedroantonino123@gmail.com')->first();
 
         $repositorio = DB::table('repositorios')->where('nombre', 'IngenieriaWeb Mola')->first();
 
-        DB::table('issue')->insert(['nombre' => 'Primer Issue de pedroantonino','estado' => 'abierto','id_usuario' => $admin->id, 'id_repo'=> $repositorio->id]);
+        
+        DB::table('issues')->insert(['nombre' => 'Primer Issue de pedroantonino','estado' => 'abierto','descripcion' => 'La mejor descripcion del mundo entero jejeje','id_usuario' => $admin->id, 'id_repo'=> $repositorio->id]);
+        DB::table('issues')->insert(['nombre' => 'Segundo Issue de pedroantonino','estado' => 'cerrado','descripcion' => 'La mejor descripcion del mundo entero jejeje','id_usuario' => $admin->id, 'id_repo'=> $repositorio->id]);
+        DB::table('issues')->insert(['nombre' => 'Tercero Issue de pedroantonino','estado' => 'abierto','descripcion' => 'La mejor descripcion del mundo entero jejeje','id_usuario' => $admin->id, 'id_repo'=> $repositorio->id]);
     }
 }
