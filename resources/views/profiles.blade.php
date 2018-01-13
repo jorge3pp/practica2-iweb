@@ -36,16 +36,6 @@
 
     <h4 align="left">Email: {{ Auth::user()->email }}</h4>
 
-    <?php
-        if(Auth::user()->email == 'Admin@admin.com'){
-            print '<h4 align="left">Tipo de cuenta: Administrador</h4>';
-        }
-        elseif(Auth::user()->rol == 1 || empty(Auth::user()->rol)){
-            print '<h4 align="left">Tipo de cuenta: Usuario</h4>';
-        }else{
-            print '<h4 align="left">Tipo de cuenta: Agente</h4>';
-        }
-    ?>
 
     </div>
     </div>

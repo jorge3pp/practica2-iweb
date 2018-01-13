@@ -75,7 +75,15 @@ class WebController extends Controller
     }
 
     public function crearIssue(Request $request, $id){
-        return view ('1crearIssue')->with('valor',$id);
+        $user = \Auth::user();
+        $repositorio = DB::table('repositorios')->where('id',$id)->first();
+        if($repositorio->administrador == $user->id) {
+            return view ('1crearIssue')->with('valor',$id);
+        }
+        else {
+            return view('error_permisos_repositorio');
+        }
+        
     }
 
     public function crearIssuePostear(Request $request, $id){

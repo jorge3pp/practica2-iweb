@@ -22,9 +22,8 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="#">Abiertos</a></li>
-                        
-                        @if(count($valores) > 0)
+						@if(count($valores) > 0)
+							<li><a href="#">Abiertos</a></li>
 						    <li><a href="{{action('WebController@issueRepositorioCerrados', $valores->get(0)->id_repo)}}">Cerrados</a></li>
                             <li><a href="{{action('WebController@crearIssue', $valores->get(0)->id_repo)}}">Crear Issue</a></li>
                         @endif
@@ -51,7 +50,7 @@
         <h1></h1>
         <table class="table table-striped">
 
-            @if(count($valores) < 0)
+            @if(count($valores) <= 0)
                 <h1>NO HAY ISSUES </h1>
             @else
                 @foreach($valores as $valor)
