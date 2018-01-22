@@ -85,6 +85,7 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     //-- parte trabajar con archivos
     Route::get('/repositorios/{id}/subirarchivos', 'StorageController@index');
     Route::post('/repositorios/{id}/storage/subirarchivo', 'StorageController@save');
+    Route::get('/repositorios/{id}/storage/mostrarfichero', 'StorageController@mostrarfichero');
 
 
     
@@ -102,6 +103,8 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
    });
    
     // -- fin parte trabajar con archivos
+
+    
 
     //FIN DE ESTAS COSAS
 

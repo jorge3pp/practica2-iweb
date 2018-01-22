@@ -290,9 +290,26 @@ class WebController extends Controller
         $issue = DB::table('issues')->where('id',$id)->first();
         return view('1detallesIssue')->with('valor',$issue);
     }
+
+
     
 
     // AQUI ACABA EL CODIGO NUEVO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

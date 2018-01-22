@@ -58,5 +58,9 @@ class StorageController extends Controller
         }
     }
 
+    public function mostrarfichero($id) {
+        return view('1mostrarfichero')->with('valor',$id);
+    }
+
 
 }
