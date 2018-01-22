@@ -13,6 +13,13 @@
 use App\Agente;
 use App\Cuartel;
 use App\Denuncia;
+use App\User;
+use App\Repositorio;
+use App\Tarea;
+use App\Issue;
+use App\PR;
+use DB;
+use Riazxrazor\LaravelSweetAlert\LaravelSweetAlert;
 
 Route::get('/','WebController@app');
 
@@ -87,20 +94,25 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     Route::post('/repositorios/{id}/storage/subirarchivo', 'StorageController@save');
     Route::get('/repositorios/{id}/storage/mostrarfichero', 'StorageController@mostrarfichero');
 
-
-    
     Route::get('/repositorios/{id}/storage/descargararchivo/{archivo}', function ($archivo) {
-        $public_path = public_path();
-        $url = $public_path.'/storage/images/'.$archivo;
-        
-        if (Storage::exists($archivo))
-        {
-          return response()->download($url);
+        $user = \Auth::user();
+        $repositorio = DB::table('repositorios')->where('id',$archivo)->first();
+
+        if($repositorio->administrador == $user->id) {
+            $public_path = public_path();
+            $url = $public_path.'/storage/images/'.$archivo;
+            
+            if (Storage::exists($archivo)) {
+                return response()->download($url);
+            }
+            else {
+                return view ('error_archivo_no_encontrado');
+            }
         }
         else {
-            return view ('error_archivo_no_encontrado');
+            return view('error_permisos_repositorio');
         }
-   });
+    });
    
     // -- fin parte trabajar con archivos
 

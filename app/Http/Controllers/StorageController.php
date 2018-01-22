@@ -20,8 +20,6 @@ class StorageController extends Controller
     public function index($id) {
         $user = \Auth::user();
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
-
-        
         $repositorios = DB::table('repositorios')->where('administrador',$user->id)->paginate(10);
 
         if($repositorio->administrador == $user->id) {
@@ -39,18 +37,10 @@ class StorageController extends Controller
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
 
         if($repositorio->administrador == $user->id) {
-            //obtenemos el campo file definido en el formulario
             $file = $request->file('file');
-        
-           //obtenemos el nombre del archivo
-           $nombre = $id;
-   
-           //$nombre = 10;
-        
-           //indicamos que queremos guardar un nuevo archivo en el disco local
-           \Storage::disk('local')->put($nombre,  \File::get($file));
-        
-           return view('1archivoguardado');
+            $nombre = $id;
+            \Storage::disk('local')->put($nombre,  \File::get($file));
+            return view('1archivoguardado');
         }
 
         else {
@@ -59,7 +49,16 @@ class StorageController extends Controller
     }
 
     public function mostrarfichero($id) {
-        return view('1mostrarfichero')->with('valor',$id);
+        $user = \Auth::user();
+        $repositorio = DB::table('repositorios')->where('id',$id)->first();
+
+        if($repositorio->administrador == $user->id) {
+            return view('1mostrarfichero')->with('valor',$id);
+        }
+        else {
+            return view('error_permisos_repositorio');
+        }
+        
     }
 
 
