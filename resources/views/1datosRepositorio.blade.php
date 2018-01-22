@@ -34,6 +34,7 @@
 						<li><a href="{{action('WebController@crearIssue', $valor->id)}}">Crear Issue</a></li>
 						<li><a href="{{action('WebController@crearPullrequest', $valor->id)}}">Crear Pull Request</a></li>
 						<li><a href="{{action('WebController@mostrarWiki', $valor->id)}}">Wiki</a></li>
+						<li><a href="{{action('StorageController@index', $valor->id)}}">SUBIR CODIGO</a></li>
 					</ul>
 
 				@endif

@@ -82,6 +82,26 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     Route::get('/repositorios/{id}/wiki','WebController@mostrarWiki');
     Route::get('/repositorios/{id}/wiki/{page}','WebController@detallesWikiPage');
 
+    //-- parte trabajar con archivos
+    Route::get('/repositorios/{id}/subirarchivos', 'StorageController@index');
+    Route::post('/repositorios/{id}/storage/subirarchivo', 'StorageController@save');
+
+
+    Route::get('storage/{archivo}', function ($archivo) {
+        $public_path = public_path();
+        $url = $public_path.'/storage/images/'.$archivo;
+        
+        if (Storage::exists($archivo))
+        {
+          return response()->download($url);
+        }
+        else {
+            return view ('error_archivo_no_encontrado');
+        }
+   });
+   
+    // -- fin parte trabajar con archivos
+
     //FIN DE ESTAS COSAS
 
 });
