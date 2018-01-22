@@ -35,6 +35,8 @@
 						<li><a href="{{action('WebController@crearPullrequest', $valor->id)}}">Crear Pull Request</a></li>
 						<li><a href="{{action('WebController@mostrarWiki', $valor->id)}}">Wiki</a></li>
 						<li><a href="{{action('StorageController@index', $valor->id)}}">SUBIR CODIGO</a></li>
+						<li><a href="/repositorios/{{$valor->id}}/storage/descargararchivo/{{$valor->id}}">DESCARGAR CODIGO</a></li>
+						
 					</ul>
 
 				@endif

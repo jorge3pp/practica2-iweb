@@ -87,7 +87,8 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     Route::post('/repositorios/{id}/storage/subirarchivo', 'StorageController@save');
 
 
-    Route::get('storage/{archivo}', function ($archivo) {
+    
+    Route::get('/repositorios/{id}/storage/descargararchivo/{archivo}', function ($archivo) {
         $public_path = public_path();
         $url = $public_path.'/storage/images/'.$archivo;
         
