@@ -18,7 +18,6 @@ use App\Repositorio;
 use App\Tarea;
 use App\Issue;
 use App\PR;
-use DB;
 use Riazxrazor\LaravelSweetAlert\LaravelSweetAlert;
 
 Route::get('/','WebController@app');
@@ -94,15 +93,15 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     Route::post('/repositorios/{id}/storage/subirarchivo', 'StorageController@save');
     Route::get('/repositorios/{id}/storage/mostrarfichero', 'StorageController@mostrarfichero');
 
-    Route::get('/repositorios/{id}/storage/descargararchivo/{archivo}', function ($archivo) {
+    Route::get('/repositorios/{id}/storage/descargararchivo/{archivo}', function ($id) {
         $user = \Auth::user();
-        $repositorio = DB::table('repositorios')->where('id',$archivo)->first();
+        $repositorio = DB::table('repositorios')->where('id',$id)->first();
 
         if($repositorio->administrador == $user->id) {
             $public_path = public_path();
-            $url = $public_path.'/storage/images/'.$archivo;
+            $url = $public_path.'/storage/images/'.$id;
             
-            if (Storage::exists($archivo)) {
+            if (Storage::exists($id)) {
                 return response()->download($url);
             }
             else {
