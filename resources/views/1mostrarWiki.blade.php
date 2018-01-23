@@ -32,11 +32,11 @@
 		</div>
 	</nav>
     
-        <div class="wiki-body">
+        <div>
             <h3 align="center">Nombre del repositorio: {{ $valor->nombre }}</h3>
-            <pre class ="container">
-                {{ $wiki->contenido }}
-            </pre>
+				<pre class ="container">
+					{{ $wiki->contenido }}
+				</pre>
         </div>
 
 	<!-- FIN Codigo Body de la página web -->

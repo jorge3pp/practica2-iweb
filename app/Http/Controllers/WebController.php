@@ -11,6 +11,7 @@ use App\Repositorio;
 use App\Tarea;
 use App\Issue;
 use App\PR;
+use App\Wiki;
 use DB;
 use Riazxrazor\LaravelSweetAlert\LaravelSweetAlert;
 
@@ -255,6 +256,9 @@ class WebController extends Controller
                     $repo->privPub = $acceso;
                     $repo->administrador = $administrador;
                     $repo->save();
+
+                    DB::table('wiki')->insert(['id_repo' => $repo->id]);
+                    
 /*
 
                     $user = User::find($administrador);

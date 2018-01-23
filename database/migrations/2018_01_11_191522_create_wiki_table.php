@@ -18,9 +18,9 @@ class CreateWikiTable extends Migration
             $table->integer('id_repo')->unique();
             $table->foreign('id_repo')->references('id')->on('repositorios');
 
-            $table->string('milestones');
-            $table->string('clone-link');
-            $table->string('contenido');
+            $table->string('milestones')->default('Milestone 0.0');
+            $table->string('clonelink')->default('linkpordefecto');
+            $table->string('contenido')->default('Wiki Home');
             $table->timestamps();
         });
     }
