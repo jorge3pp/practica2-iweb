@@ -37,7 +37,7 @@ class WebController extends Controller
         
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
         
-        if($repositorio->privPub == '0' && $repositorio->administrador == $user->id) {
+        if($repositorio->administrador == $user->id) {
             return view('1datosRepositorio')->with('valor',$repositorio);
         }
         else {
