@@ -315,7 +315,33 @@ class WebController extends Controller
         return view('1detallesIssue')->with('valor',$issue);
     }
 
+    public function modificarWikiPostear(Request $request,$id){
+               
+                $contenido = (string)$request->input('contenido'); //OJO NO LIARLA Q ESTAMOS HABLANDO DEL MISMO LABEL
+                $milestone = (string)$request->input('milestone');
+                
+                try{
+                    if($id==0) throw new \Exception();
+                    $repositorio = DB::table('repositorios')->where('id',$id)->first();
+                    $wiki = DB::table('wiki')->where('id_repo',$id)->first();
+                    if($contenido!="") DB::table('wiki')->where('id',$wiki->id)->update(['contenido'=>$contenido]);
+                    if($milestone!="") DB::table('wiki')->where('id',$wiki->id)->update(['milestones'=>$milestone]);
+        
+                    return view('1mostrarWiki')->with('wiki',$wiki)->with('valor',$repositorio);
+                }
+                catch(\Exception $e) {
+                    //LaravelSweetAlert::setMessageDanger("Error al modificar los datos");
+                    return view('error');
+        
+                }
+            }
 
+    public function modificarWiki($id){
+        $repositorio = DB::table('repositorios')->where('id',$id)->first();
+        $wiki = DB::table('wiki')->where('id_repo',$id)->first();
+
+        return view ('1modificarWiki')->with('wiki', $wiki)->with('repo', $repositorio);
+    }
     
 
     // AQUI ACABA EL CODIGO NUEVO

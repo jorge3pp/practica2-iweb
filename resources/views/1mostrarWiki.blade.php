@@ -34,7 +34,7 @@
     
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-						<li><a href="/repositoriosp">Editar</a></li>
+						<li><a href="{{action('WebController@modificarWiki', $wiki->id)}}">Editar</a></li>
 						<li><a href="/repositoriosp">Crear nueva página</a></li>
 					</ul>
 			</div>
