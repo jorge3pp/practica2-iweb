@@ -38,7 +38,7 @@ class WebController extends Controller
         
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
         
-        if($repositorio->privPub == '0' && $repositorio->administrador == $user->id) {
+        if($repositorio->administrador == $user->id) {
             return view('1datosRepositorio')->with('valor',$repositorio);
         }
         else {
@@ -66,14 +66,34 @@ class WebController extends Controller
     }
 
     public function issueRepositorio($id) {
-        $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
-        return view('1issue_repositorio')->with('valores',$issues);
+        $user = \Auth::user();
+
+        $repositorio = DB::table('repositorios')->where('id',$id)->first();
+        
+        if($repositorio->administrador == $user->id)  {
+            $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
+            return view('1issue_repositorio')->with('valores',$issues);
+        }
+
+        else {
+            return view('error_permisos_repositorio');
+        }
 
     }
 
     public function issueRepositorioCerrados($id) {
-        $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
-        return view('1issue_repositorio_cerrados')->with('valores',$issues);
+        $user = \Auth::user();
+        
+        $repositorio = DB::table('repositorios')->where('id',$id)->first();
+                
+        if($repositorio->administrador == $user->id)  {
+            $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
+            return view('1issue_repositorio_cerrados')->with('valores',$issues);
+        }
+        
+        else {
+            return view('error_permisos_repositorio');
+        }
     }
 
     public function crearIssue(Request $request, $id){
