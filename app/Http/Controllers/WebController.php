@@ -274,14 +274,15 @@ class WebController extends Controller
                 $administrador = \Auth::user()->id;
                 $nombre = (string)$request->input('nombre');
                 $acceso = (int)$request->input('acceso');
-                $lang = (int)$request->input('lang');
-                dd($lang);
+                $lang = (string)$request->input('lang');
 
                 try {
                     $repo = new Repositorio;
                     $repo->nombre = $nombre;
                     $repo->privPub = $acceso;
-                    $repo->lang = $lang;
+                    if($lang!=''){
+                        $repo->lang = $lang;
+                    }
                     $repo->administrador = $administrador;
                     $repo->save();
 

@@ -37,7 +37,7 @@
                                 @foreach($langs as $valor)   
                                         <option value ="{{$valor->proglang}}"> {{$valor->proglang}} </option>
                                 @endforeach
-                            </select>
+                            </select></div>
                      </td>
                 <tr>
                     <input type="submit" value="Crear repositorio"></td>
