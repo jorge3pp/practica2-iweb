@@ -191,7 +191,7 @@ Route::group(['middleware' => 'partePrivadaAdmin'], function() {
     //PARTE NUEVA PRACTICA PARA BO
 
     Route::get('/anadirtiporepo','WebController@anadirTipoRepo');
-   //Route::post('/anadirtiporepo','WebController@anadirTipoRepoPostear');
+    Route::post('/anadirtiporepo','WebController@anadirTipoRepoPostear');
 
     //FIN PARTE NUEVA
 

@@ -111,6 +111,27 @@ class WebController extends Controller
     public function anadirTipoRepo() {
         return view('1anadirTiposRepositorio');
     }
+    
+
+    public function anadirTipoRepoPostear(Request $request, $id){
+        $user = \Auth::user();
+
+        $v = \Validator::make($request->all(),['nombre' => 'required|max:10']);
+
+        if ($v->fails()){
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+        
+        $nombre = (string)$request->input('nombre');
+
+        try{
+            DB::table('lang')->insert(['proglang'=>$nombre]);
+            return view('app');
+
+        }catch(\Exception $e) {
+            return view('error');
+        }
+    }
 
     public function crearIssuePostear(Request $request, $id){
         $user = \Auth::user();
