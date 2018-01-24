@@ -63,7 +63,7 @@
                     <td align="left"><div class="form-group">
                         <label for="">Selecciona el Issue a cerrar (opcional)</label>
                         <select name="issue" id="issue" class="form-control">
-                            <option value "">--Escoja el issue--</option>
+                            <option value "">--  Ninguno  --</option>
                             @foreach($issues as $valor) 
                                 @if($valor->id_usuario == Auth::user()->id && $valor->estado == 'abierto')      
                                     <option value ="{{$valor->id}}"> {{$valor->nombre}} </option>
