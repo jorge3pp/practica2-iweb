@@ -115,6 +115,9 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
    
     // -- fin parte trabajar con archivos
 
+
+    Route::get('/repositorios/{id}/modificar/wiki','WebController@modificarWiki');
+    Route::post('/repositorios/{id}/modificar/wiki','WebController@modificarWikiPostear');
     
 
     //FIN DE ESTAS COSAS
