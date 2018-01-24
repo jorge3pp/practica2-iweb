@@ -372,6 +372,46 @@ class WebController extends Controller
 
         return view ('1modificarWiki')->with('wiki', $wiki)->with('repo', $repositorio);
     }
+
+    /*
+    public function anadirTipoRepo() {
+        return view('1anadirTiposRepositorio');
+    }
+    */
+
+
+
+
+
+
+    public function modificarRepositorios() {
+        return view('1modificarRepositorios');
+    }
+
+    public function actualizarRepositorios(){
+        $repositorios = Repositorio::all();
+        $usuarios = User::all();
+        return view('1actualizarRepositorios')->with('valores',$repositorios)->with('usuarios',$usuarios);
+    }
+
+    public function actualizarRepositoriosPostear(Request $request)  {
+        
+        try {
+            $repositorioaux = (string)$request->input('repositorio');
+            $nuevoadministrador = (string)$request->input('administrador');
+
+            //$repositorio = Repositorio::where('id',$issueaux);
+            //$issue->update(['administrador'=>$nuevoadministrador]);
+
+            LaravelSweetAlert::setMessageSuccess("Los datos han sido modificados correctamente");
+            return view('1modificarRepositorios');
+
+        }
+        catch(\Exception $e) {
+            return view('error404');
+        }
+
+    }
     
 
     // AQUI ACABA EL CODIGO NUEVO
