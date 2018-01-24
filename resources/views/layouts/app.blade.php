@@ -64,12 +64,21 @@
 					</ul>
 					
 				@else
-					<ul class="nav navbar-nav">
-						<li><a href="/repositoriosp">Repositorios destacados</a></li>
-						<li><a href="/repositorios">Mis repositorios</a></li>
-						<li><a href="/new">Nuevo repositorio</a></li>
-					</ul>
 
+					@if (Auth::user()->email == 'Admin@admin.com')
+						<ul class="nav navbar-nav">
+							<li><a href="/repositoriosp">Repositorios destacados</a></li>
+							<li><a href="/anadirtiporepo">Modificar lenguajes prog. repositorio</a></li>
+						</ul>
+
+					@else
+
+						<ul class="nav navbar-nav">
+							<li><a href="/repositoriosp">Repositorios destacados</a></li>
+							<li><a href="/repositorios">Mis repositorios</a></li>
+							<li><a href="/new">Nuevo repositorio</a></li>
+						</ul>
+					@endif
 				@endif
 
 				<ul class="nav navbar-nav navbar-right">

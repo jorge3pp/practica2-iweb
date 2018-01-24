@@ -108,6 +108,10 @@ class WebController extends Controller
         
     }
 
+    public function anadirTipoRepo() {
+        return view('1anadirTiposRepositorio');
+    }
+
     public function crearIssuePostear(Request $request, $id){
         $user = \Auth::user();
 
