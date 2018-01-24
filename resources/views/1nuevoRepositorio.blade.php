@@ -31,15 +31,12 @@
                      <label><input type="radio" class="flat" name="acceso" value="1" >Publico</label>
                     </td>
                 </tr>
-                <tr>
                     <td align="left"><div class="form-group">
                         <select name="lang" id="lang" class="form-control">
-                                <option value "">--Escoja el lenguaje de programación--</option>
-                                <option value ="Java"> Java </option>
-                                <option value ="C++"> C++ </option>
-                                <option value ="JS"> JS </option>
-                                <option value ="PHP"> PHP </option>
-                                <option value ="C#"> C# </option>
+                                <option value ""> Escoja el lenguaje de programacion </option>
+                                @foreach($langs as $valor)   
+                                        <option value ="{{$valor->proglang}}"> {{$valor->proglang}} </option>
+                                @endforeach
                             </select>
                      </td>
                 <tr>

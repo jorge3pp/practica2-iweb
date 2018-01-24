@@ -255,7 +255,8 @@ class WebController extends Controller
    
   
     public function formNuevoProyecto(){
-        return view('1nuevoRepositorio');
+        $langs = DB::table('lang')->get();
+        return view('1nuevoRepositorio')->with('langs', $langs);
     }
 
     public function nuevoProyectoPostear(Request $request){

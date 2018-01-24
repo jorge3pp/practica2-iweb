@@ -24,6 +24,7 @@ class CreateRepositoriosTable extends Migration
             // privPub == 1 se trata de un repo publico
             $table->integer('privPub');
             $table->foreign('administrador')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('lang')->references('proglang')->on('lang');
             $table->timestamps();
         });
     }

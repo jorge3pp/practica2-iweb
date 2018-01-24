@@ -11,11 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(CuartelTableSeeder::class);
-        $this->command->info('Seeder de Cuartel ejecutado');
 
         $this->call(UserTableSeeder::class);
         $this->command->info('Seeder de User ejecutado');
+
+        $this->call(LangTableSeeder::class);
+        $this->command->info('Seeder de Lenguajes de programacion admitidos ejecutado');
 
         $this->call(RepositoriosSeeder::class);
         $this->command->info('Seeder de Repositorios ejecutado');
@@ -31,7 +32,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ListaUsuariosRepoSeeder::class);
         $this->command->info('Seeder de ListaUsuariosRepo ejecutado');
-
 
         $this->call(WikiSeeder::class);
         $this->command->info('Seeder de Wikis ejecutado');
