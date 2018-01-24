@@ -189,6 +189,9 @@ Route::group(['middleware' => 'partePrivadaAdmin'], function() {
 
 
     //PARTE NUEVA PRACTICA PARA BO
+    Route::get('/modificarrepositorios','WebController@modificarRepositorios');
+    Route::get('/actualizarrepositorios','WebController@actualizarRepositorios');
+    Route::post('/actualizarrepositorios','WebController@actualizarRepositoriosPostear');
 
     Route::get('/anadirtiporepo','WebController@anadirTipoRepo');
    //Route::post('/anadirtiporepo','WebController@anadirTipoRepoPostear');

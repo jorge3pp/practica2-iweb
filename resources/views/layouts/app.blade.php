@@ -69,6 +69,7 @@
 						<ul class="nav navbar-nav">
 							<li><a href="/repositoriosp">Repositorios destacados</a></li>
 							<li><a href="/anadirtiporepo">Modificar lenguajes prog. repositorio</a></li>
+							<li><a href="/modificarrepositorios">Modificar Repositorios</a></li>
 						</ul>
 
 					@else
