@@ -16,6 +16,7 @@ class CreateRepositoriosTable extends Migration
         Schema::create('repositorios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->string('lang');
             $table->integer('administrador');
             $table->integer('estrellas')->default(0);
             $table->integer('contador_seguidores')->default(1);

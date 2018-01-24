@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PullSeeder::class);
         $this->command->info('Seeder de Pull Requests ejecutado');
 
-
+        $this->call(CommitSeeder::class);
+        $this->command->info('Seeder de Commits ejecutado');
 
         $this->call(ListaUsuariosRepoSeeder::class);
         $this->command->info('Seeder de ListaUsuariosRepo ejecutado');
