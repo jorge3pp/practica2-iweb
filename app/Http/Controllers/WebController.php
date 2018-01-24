@@ -113,7 +113,7 @@ class WebController extends Controller
     }
     
 
-    public function anadirTipoRepoPostear(Request $request, $id){
+    public function anadirTipoRepoPostear(Request $request){
         $user = \Auth::user();
 
         $v = \Validator::make($request->all(),['nombre' => 'required|max:10']);
@@ -126,7 +126,7 @@ class WebController extends Controller
 
         try{
             DB::table('lang')->insert(['proglang'=>$nombre]);
-            return view('app');
+            return view('1anadirTiposRepositorioPostear');
 
         }catch(\Exception $e) {
             return view('error');
