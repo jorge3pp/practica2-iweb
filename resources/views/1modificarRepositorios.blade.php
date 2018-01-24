@@ -23,6 +23,7 @@
 					<ul class="nav navbar-nav">
 						<li><a href="{{action('WebController@actualizarRepositorios')}}">ACTUALIZAR REPOSITORIO</a></li>
 						<li><a href="#">BORRAR REPOSITORIO</a></li>
+						<li><a href="/crearrepositorioadmin">CREAR REPOSITORIO</a></li>
 						
 					</ul>
 

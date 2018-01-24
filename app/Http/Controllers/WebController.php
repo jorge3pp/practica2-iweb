@@ -38,7 +38,7 @@ class WebController extends Controller
         
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
         
-        if($repositorio->administrador == $user->id) {
+        if($repositorio->administrador == $user->id || $user->email == 'Admin@admin.com') {
             return view('1datosRepositorio')->with('valor',$repositorio);
         }
         else {
@@ -56,7 +56,7 @@ class WebController extends Controller
         $user = \Auth::user();
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
         $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
-        if($repositorio->privPub == '1' || $repositorio->administrador == $user->id) {
+        if($repositorio->privPub == '1' || $repositorio->administrador == $user->id || $user->email == 'Admin@admin.com') {
             return view('1datosRepositorioPublico')->with('valor',$repositorio);
         }
         else {
@@ -70,7 +70,7 @@ class WebController extends Controller
 
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
         
-        if($repositorio->administrador == $user->id)  {
+        if($repositorio->administrador == $user->id || $user->email == 'Admin@admin.com')  {
             $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
             return view('1issue_repositorio')->with('valores',$issues);
         }
@@ -86,7 +86,7 @@ class WebController extends Controller
         
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
                 
-        if($repositorio->administrador == $user->id)  {
+        if($repositorio->administrador == $user->id || $user->email == 'Admin@admin.com')  {
             $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
             return view('1issue_repositorio_cerrados')->with('valores',$issues);
         }
@@ -99,7 +99,7 @@ class WebController extends Controller
     public function crearIssue(Request $request, $id){
         $user = \Auth::user();
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
-        if($repositorio->administrador == $user->id) {
+        if($repositorio->administrador == $user->id || $user->email == 'Admin@admin.com') {
             return view ('1crearIssue')->with('valor',$id);
         }
         else {
@@ -282,11 +282,11 @@ class WebController extends Controller
 
     public function nuevoProyectoPostear(Request $request){
         
-                //$id = (int)$_POST['id']; 
-                //$user = $_REQUEST['res'];
-                $v = \Validator::make($request->all(),[
-                    'nombre' => 'required|max:255',
-                    'acceso' => 'required']);
+        //$id = (int)$_POST['id']; 
+        //$user = $_REQUEST['res'];
+        $v = \Validator::make($request->all(),[
+            'nombre' => 'required|max:255',
+            'acceso' => 'required']);
         
                 if ($v->fails()){
                     return redirect()->back()->withInput()->withErrors($v->errors());
@@ -331,7 +331,7 @@ class WebController extends Controller
                 catch(\Exception $e) {
                     return view('error');
                 }
-            }
+    }
 
             
     public function mostrarWiki($id) {
@@ -373,16 +373,6 @@ class WebController extends Controller
         return view ('1modificarWiki')->with('wiki', $wiki)->with('repo', $repositorio);
     }
 
-    /*
-    public function anadirTipoRepo() {
-        return view('1anadirTiposRepositorio');
-    }
-    */
-
-
-
-
-
 
     public function modificarRepositorios() {
         return view('1modificarRepositorios');
@@ -400,11 +390,10 @@ class WebController extends Controller
             $repositorioaux = (string)$request->input('repositorio');
             $nuevoadministrador = (string)$request->input('administrador');
 
-            //$repositorio = Repositorio::where('id',$issueaux);
-            //$issue->update(['administrador'=>$nuevoadministrador]);
-
-            DB::table('repositorios')->where('id', $repositorioaux)->update(['administrador' => $nuevoadministrador]);
-
+            if($repositorioaux!="" && $nuevoadministrador!="") {
+                DB::table('repositorios')->where('id', $repositorioaux)->update(['administrador' => $nuevoadministrador]);
+            }
+            
             LaravelSweetAlert::setMessageSuccess("Los datos han sido modificados correctamente");
             return view('1modificarRepositorios');
 
@@ -413,6 +402,52 @@ class WebController extends Controller
             return view('error');
         }
 
+    }
+
+    public function repositoriosAdmin() {
+        $repositorios = DB::table('repositorios')->paginate(10);
+        return view('1repositoriosAdmin')->with('valores',$repositorios);
+    }
+
+    public function crearRepositorioAdmin(){
+        $langs = DB::table('lang')->get();
+        $usuarios = User::all();
+
+        return view('1nuevoRepositorioAdmin')->with('langs', $langs)->with('usuarios',$usuarios);
+    }
+
+    public function crearRepositorioAdminPostear(Request $request){
+        
+        $v = \Validator::make($request->all(),[
+            'nombre' => 'required|max:255',
+            'acceso' => 'required']);
+        
+                if ($v->fails()){
+                    return redirect()->back()->withInput()->withErrors($v->errors());
+                }
+                
+                $administrador = (string)$request->input('administrador');
+                $nombre = (string)$request->input('nombre');
+                $acceso = (int)$request->input('acceso');
+                $lang = (string)$request->input('lang');
+
+                try {
+                    $repo = new Repositorio;
+                    $repo->nombre = $nombre;
+                    $repo->privPub = $acceso;
+                    if($lang!=''){
+                        $repo->lang = $lang;
+                    }
+                    $repo->administrador = $administrador;
+                    $repo->save();
+
+                    DB::table('wiki')->insert(['id_repo' => $repo->id]);
+                    
+                    return view('1nuevoRepositorioPostear');
+                }
+                catch(\Exception $e) {
+                    return view('error');
+                }
     }
     
 

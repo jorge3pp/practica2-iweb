@@ -193,8 +193,13 @@ Route::group(['middleware' => 'partePrivadaAdmin'], function() {
     Route::get('/actualizarrepositorios','WebController@actualizarRepositorios');
     Route::post('/actualizarrepositorios','WebController@actualizarRepositoriosPostear');
 
+    Route::get('/repositoriosadmin','WebController@repositoriosAdmin');
+
     Route::get('/anadirtiporepo','WebController@anadirTipoRepo');
     Route::post('/anadirtiporepo','WebController@anadirTipoRepoPostear');
+
+    Route::get('/crearrepositorioadmin','WebController@crearRepositorioAdmin');
+    Route::post('/crearrepositorioadmin','WebController@crearRepositorioAdminPostear');
 
     //FIN PARTE NUEVA
 
