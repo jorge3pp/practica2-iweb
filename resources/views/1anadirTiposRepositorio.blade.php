@@ -26,7 +26,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
 					
-						<li><a href="{{action('WebController@issueRepositorio', $valor)}}">VOLVER A LA PAGINA DE LOS ISSUES</a></li>
+						<li><a href="/repositorios">VOLVER A LA PAGINA PRINCIPAL</a></li>
 					
 				</ul>
 			</div>
@@ -51,17 +51,11 @@
 		<table width="400px" align="left">
 			<tr>
                 <tr>
-                       <td ><input value="{{ old('nombre') }}" type="text" name="nombre" id="nombre" placeholder="Introduce el Nombre">
-                </tr>
-                <tr>
-                        
-                    <td ><input value="{{ old('descripcion') }}" class="field" type="text" name="descripcion" id="descripcion" placeholder="Introduce la descripción">
-                    <!--<td><label>Introduce una descripcion del Issue:</label><textarea name="descripcion" id="descripcion" cols="50" rows="10"></textarea></td> -->
-                </tr>
-			    
+                       <td ><input value="{{ old('nombre') }}" type="text" name="nombre" id="nombre" placeholder="Introduce el Tipo de repositorio">
+                </tr>			    
             </tr>
             <tr>
-                <td> <input type="submit" value="Crear Issue"></td>
+                <td> <input type="submit" value="Añadir Tipo"></td>
             </tr>
 		</table>
 	</form>

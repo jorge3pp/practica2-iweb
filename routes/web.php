@@ -186,9 +186,12 @@ Route::group(['middleware' => 'partePrivadaAdmin'], function() {
     Route::get('/usuarios/borrado/{id}','WebController@borrarUsuario');
 
 
+
+
     //PARTE NUEVA PRACTICA PARA BO
 
-
+    Route::get('/anadirtiporepo','WebController@anadirTipoRepo');
+   //Route::post('/anadirtiporepo','WebController@anadirTipoRepoPostear');
 
     //FIN PARTE NUEVA
 

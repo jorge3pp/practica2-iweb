@@ -68,7 +68,7 @@
 					@if (Auth::user()->email == 'Admin@admin.com')
 						<ul class="nav navbar-nav">
 							<li><a href="/repositoriosp">Repositorios destacados</a></li>
-							<li><a href="#">Modificar lenguajes prog. repositorio</a></li>
+							<li><a href="/anadirtiporepo">Modificar lenguajes prog. repositorio</a></li>
 						</ul>
 
 					@else
