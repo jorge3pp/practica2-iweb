@@ -65,6 +65,8 @@
             @endif
             
             <pre class ="container">
+				Lenguaje de programación: {{$valor->lang}}
+
                 Estrellas del repositorio: {{ $valor->estrellas }}
                 Contador seguidores: {{$valor->contador_seguidores}}
             </pre>

@@ -32,6 +32,17 @@
                     </td>
                 </tr>
                 <tr>
+                    <td align="left"><div class="form-group">
+                        <select name="lang" id="lang" class="form-control">
+                                <option value "">--Escoja el lenguaje de programación--</option>
+                                <option value ="Java"> Java </option>
+                                <option value ="C++"> C++ </option>
+                                <option value ="JS"> JS </option>
+                                <option value ="PHP"> PHP </option>
+                                <option value ="C#"> C# </option>
+                            </select>
+                     </td>
+                <tr>
                     <input type="submit" value="Crear repositorio"></td>
                 </tr>
             </tr>

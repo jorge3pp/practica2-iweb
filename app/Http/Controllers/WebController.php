@@ -270,6 +270,7 @@ class WebController extends Controller
                 $nombre = (string)$request->input('nombre');
                 $acceso = (int)$request->input('acceso');
                 $lang = (int)$request->input('lang');
+                dd($lang);
 
                 try {
                     $repo = new Repositorio;
