@@ -62,6 +62,8 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
 
     //RUTAS NUEVAS
 
+    Route::get('/home', 'WebController@repositoriosUsuario');
+
     Route::get('/repositorios','WebController@repositoriosUsuario');
 
     Route::get('/repositorios/{id}','WebController@datosRepositorio');
@@ -235,6 +237,6 @@ Route::get('/tareas/agentes/{id}','WebController@tareasAgentes');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+
 
 Route::get('auth/logout', 'WebController@logout');

@@ -7,7 +7,7 @@
 	<!-- INICIO Codigo Body de la página web -->	
 	
 	<h1 class="title m-b-md" align="center">Detalles del repositorio</h1>
-    @if (Auth::user()->id == $valor->administrador)
+    @if (Auth::user()->id == $valor->administrador || Auth::user()->email == 'Admin@admin.com')
 
     <nav class="navbar navbar-default navbar-inverse container">
 		<div class="container-fluid">
