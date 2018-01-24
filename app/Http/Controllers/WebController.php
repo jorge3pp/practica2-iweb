@@ -403,12 +403,14 @@ class WebController extends Controller
             //$repositorio = Repositorio::where('id',$issueaux);
             //$issue->update(['administrador'=>$nuevoadministrador]);
 
+            DB::table('repositorios')->where('id', $repositorioaux)->update(['administrador' => $nuevoadministrador]);
+
             LaravelSweetAlert::setMessageSuccess("Los datos han sido modificados correctamente");
             return view('1modificarRepositorios');
 
         }
         catch(\Exception $e) {
-            return view('error404');
+            return view('error');
         }
 
     }
