@@ -108,6 +108,30 @@ class WebController extends Controller
         
     }
 
+    public function anadirTipoRepo() {
+        return view('1anadirTiposRepositorio');
+    }
+    
+
+    public function anadirTipoRepoPostear(Request $request, $id){
+        $user = \Auth::user();
+
+        $v = \Validator::make($request->all(),['nombre' => 'required|max:10']);
+
+        if ($v->fails()){
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+        
+        $nombre = (string)$request->input('nombre');
+
+        try{
+            DB::table('lang')->insert(['proglang'=>$nombre]);
+            return view('app');
+
+        }catch(\Exception $e) {
+            return view('error');
+        }
+    }
 
     public function crearIssuePostear(Request $request, $id){
         $user = \Auth::user();
@@ -252,7 +276,8 @@ class WebController extends Controller
    
   
     public function formNuevoProyecto(){
-        return view('1nuevoRepositorio');
+        $langs = DB::table('lang')->get();
+        return view('1nuevoRepositorio')->with('langs', $langs);
     }
 
     public function nuevoProyectoPostear(Request $request){
@@ -270,11 +295,15 @@ class WebController extends Controller
                 $administrador = \Auth::user()->id;
                 $nombre = (string)$request->input('nombre');
                 $acceso = (int)$request->input('acceso');
+                $lang = (string)$request->input('lang');
 
                 try {
                     $repo = new Repositorio;
                     $repo->nombre = $nombre;
                     $repo->privPub = $acceso;
+                    if($lang!=''){
+                        $repo->lang = $lang;
+                    }
                     $repo->administrador = $administrador;
                     $repo->save();
 
@@ -344,10 +373,11 @@ class WebController extends Controller
         return view ('1modificarWiki')->with('wiki', $wiki)->with('repo', $repositorio);
     }
 
-
+    /*
     public function anadirTipoRepo() {
         return view('1anadirTiposRepositorio');
     }
+    */
 
 
 

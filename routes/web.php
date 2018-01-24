@@ -194,7 +194,7 @@ Route::group(['middleware' => 'partePrivadaAdmin'], function() {
     Route::post('/actualizarrepositorios','WebController@actualizarRepositoriosPostear');
 
     Route::get('/anadirtiporepo','WebController@anadirTipoRepo');
-   //Route::post('/anadirtiporepo','WebController@anadirTipoRepoPostear');
+    Route::post('/anadirtiporepo','WebController@anadirTipoRepoPostear');
 
     //FIN PARTE NUEVA
 

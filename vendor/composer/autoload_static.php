@@ -304,6 +304,7 @@ class ComposerStaticInit1575b343e10f9ed3dbab02607478c391
         'CreateIssuePRTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_192956_create_issuePR_table.php',
         'CreateIssueTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_183404_create_issue_table.php',
         'CreateIssuesTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_12_210331_create_issues_table.php',
+        'CreateLangTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_24_165325_create_lang_table.php',
         'CreateListaUsurepo' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_000650_create_lista_usurepo.php',
         'CreatePRsTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_13_185949_create_p_rs_table.php',
         'CreatePullsTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_181933_create_pulls_table.php',
@@ -313,7 +314,6 @@ class ComposerStaticInit1575b343e10f9ed3dbab02607478c391
         'CreateTareaTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_27_154343_create_tarea_table.php',
         'CreateUserTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_27_154233_create_user_table.php',
         'CreateWikiPagesTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_191653_create_wikiPages_table.php',
-        'CreateWikiRepoTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_192110_create_wikiRepo_table.php',
         'CreateWikiTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_11_191522_create_wiki_table.php',
         'CuartelTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CuartelTableSeeder.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
@@ -396,6 +396,8 @@ class ComposerStaticInit1575b343e10f9ed3dbab02607478c391
         'InfoSeeder' => __DIR__ . '/../..' . '/database/seeds/InfoSeeder.php',
         'IssuePRSeeder' => __DIR__ . '/../..' . '/database/seeds/IssuePRSeeder.php',
         'IssueSeeder' => __DIR__ . '/../..' . '/database/seeds/IssueSeeder.php',
+        'LangSeeder' => __DIR__ . '/../..' . '/database/seeds/LangSeeder.php',
+        'LangTableSeeder' => __DIR__ . '/../..' . '/database/seeds/LangTableSeeder.php',
         'ListaUsuariosRepoSeeder' => __DIR__ . '/../..' . '/database/seeds/ListaUsuariosRepoSeeder.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/AssertionFailedError.php',
@@ -870,7 +872,6 @@ class ComposerStaticInit1575b343e10f9ed3dbab02607478c391
         'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
         'UsuariosSeeder' => __DIR__ . '/../..' . '/database/seeds/UsuariosSeeder.php',
         'WikiPagesSeeder' => __DIR__ . '/../..' . '/database/seeds/WikiPagesSeeder.php',
-        'WikiRepoSeeder' => __DIR__ . '/../..' . '/database/seeds/WikiRepoSeeder.php',
         'WikiSeeder' => __DIR__ . '/../..' . '/database/seeds/WikiSeeder.php',
     );
 

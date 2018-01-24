@@ -31,6 +31,14 @@
                      <label><input type="radio" class="flat" name="acceso" value="1" >Publico</label>
                     </td>
                 </tr>
+                    <td align="left"><div class="form-group">
+                        <select name="lang" id="lang" class="form-control">
+                                <option value ""> Escoja el lenguaje de programacion </option>
+                                @foreach($langs as $valor)   
+                                        <option value ="{{$valor->proglang}}"> {{$valor->proglang}} </option>
+                                @endforeach
+                            </select></div>
+                     </td>
                 <tr>
                     <input type="submit" value="Crear repositorio"></td>
                 </tr>

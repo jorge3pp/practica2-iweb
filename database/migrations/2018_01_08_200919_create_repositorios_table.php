@@ -16,6 +16,7 @@ class CreateRepositoriosTable extends Migration
         Schema::create('repositorios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->string('lang');
             $table->integer('administrador');
             $table->integer('estrellas')->default(0);
             $table->integer('contador_seguidores')->default(1);
@@ -23,6 +24,7 @@ class CreateRepositoriosTable extends Migration
             // privPub == 1 se trata de un repo publico
             $table->integer('privPub');
             $table->foreign('administrador')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('lang')->references('proglang')->on('lang');
             $table->timestamps();
         });
     }

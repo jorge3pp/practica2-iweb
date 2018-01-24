@@ -55,7 +55,7 @@
                 </tr>			    
             </tr>
             <tr>
-                <td> <input type="submit" value="Añadir Tipo"></td>
+                <td> <input type="submit" value="Añadir Lenguaje de programación"></td>
             </tr>
 		</table>
 	</form>
