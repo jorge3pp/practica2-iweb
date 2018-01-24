@@ -120,6 +120,9 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
 
     Route::get('/repositorios/{id}/modificar/wiki','WebController@modificarWiki');
     Route::post('/repositorios/{id}/modificar/wiki','WebController@modificarWikiPostear');
+
+
+    Route::get('/repositorios/{id}/commits','WebController@commitsRepositorio');
     
 
     //FIN DE ESTAS COSAS

@@ -23,6 +23,7 @@ class CreatePRsTable extends Migration
             $table->foreign('id_usuario')->references('id')->on('users');
 
             $table->integer('id_issue');
+            $table->foreign('id_issue')->references('id')->on('issues');
 
             $table->integer('id_repo');
             $table->foreign('id_repo')->references('id')->on('repositorios');

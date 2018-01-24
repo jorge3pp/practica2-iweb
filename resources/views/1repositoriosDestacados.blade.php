@@ -21,10 +21,13 @@
 
             </tr>
             @foreach($valores as $valor)
-                
             <tr>
                 <td><a href="{{action('WebController@datosRepositorioPublico', $valor->id)}}"> {{ $valor->nombre }}</a> </td>
-                <td> {{ $valor->administrador }} </td>
+                @foreach ($users as $user)
+                    @if($valor->administrador == $user->id)
+                    <td> {{ $user->name }} </td>  
+                    @endif
+                @endforeach
                 <td> {{ $valor->estrellas }} </td>    
             </tr> 
 

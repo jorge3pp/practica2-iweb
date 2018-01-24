@@ -49,7 +49,9 @@ class WebController extends Controller
 
     public function repositoriosDestacados() {
         $repositorios = DB::table('repositorios')->where('privPub','1')->paginate(10);
-        return view('1repositoriosDestacados')->with('valores',$repositorios);
+
+        $users = DB::table('users')->get();
+        return view('1repositoriosDestacados')->with('valores',$repositorios)->with('users', $users);
     }
 
     public function datosRepositorioPublico($id) {
@@ -450,6 +452,14 @@ class WebController extends Controller
                 }
     }
     
+
+    public function commitsRepositorio($id) {
+        
+        $commits = DB::table('commit')->where('id_repo',$id)->paginate(10);
+        $repo = DB::table('repositorios')->where('id',$id)->first();
+        return view('1commits')->with('valores',$commits)->with('repo',$repo);
+    }
+
 
     // AQUI ACABA EL CODIGO NUEVO
 
