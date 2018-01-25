@@ -62,8 +62,6 @@
 						<ul class="nav navbar-nav">
 							<li><a href="{{action('WebController@issueRepositorio', $valor->id)}}">Issues</a></li>
 							<li><a href="{{action('WebController@pullrequestRepositorio', $valor->id)}}">Pull Requests</a></li>
-							<li><a href="{{action('WebController@crearIssue', $valor->id)}}">Crear Issue</a></li>
-							<li><a href="{{action('WebController@crearPullrequest', $valor->id)}}">Crear Pull Request</a></li>
 							<li><a href="{{action('WebController@mostrarWiki', $valor->id)}}">Wiki</a></li>
 							<li><a href="{{action('StorageController@index', $valor->id)}}">SUBIR CODIGO</a></li>
 							<li><a href="/repositorios/{{$valor->id}}/storage/descargararchivo/{{$valor->id}}">DESCARGAR CODIGO</a></li>

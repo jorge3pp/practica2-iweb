@@ -359,11 +359,6 @@ class WebController extends Controller
         return view('1mostrarWiki')->with('wiki',$wiki)->with('valor',$repositorio);
     }
 
-    public function detallesWikiPage($id,$page) {
-        $issue = DB::table('issues')->where('id',$id)->first();
-        return view('1detallesIssue')->with('valor',$issue);
-    }
-
     public function modificarWikiPostear(Request $request,$id){
                
                 $contenido = (string)$request->input('contenido'); //OJO NO LIARLA Q ESTAMOS HABLANDO DEL MISMO LABEL
