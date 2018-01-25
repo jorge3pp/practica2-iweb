@@ -98,6 +98,7 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     Route::post('/repositorios/{id}/storage/subirarchivo', 'StorageController@save');
     Route::get('/repositorios/{id}/storage/mostrarfichero', 'StorageController@mostrarfichero');
 
+    //Route::get('/repositorios/{id}/storage/descargararchivo/{archivo}', 'StorageController@descargarfichero');
     Route::get('/repositorios/{id}/storage/descargararchivo/{archivo}', function ($id) {
         $user = \Auth::user();
         $repositorio = DB::table('repositorios')->where('id',$id)->first();

@@ -17,6 +17,6 @@ class WikiSeeder extends Seeder
         $repo = DB::table('repositorios')->where('nombre','IngenieriaWeb Mola')->first();
         
         DB::table('wiki')->insert(['id_repo' => $repo->id,'milestones' => 'Milestone 1.0',
-            'clonelink' => 'linkgitclone', 'contenido' => 'Home de la pagina de pepote']);
+            'clonelink' => "localhost:8000/repositorios/$repo->id/storage/descargararchivo/$repo->id", 'contenido' => 'Home de la pagina de pepote']);
     }
 }

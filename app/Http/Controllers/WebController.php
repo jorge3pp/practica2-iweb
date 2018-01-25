@@ -472,7 +472,8 @@ class WebController extends Controller
         
         $commits = DB::table('commit')->where('id_repo',$id)->paginate(10);
         $repo = DB::table('repositorios')->where('id',$id)->first();
-        return view('1commits')->with('valores',$commits)->with('repo',$repo);
+        $users = DB::table('users')->get();
+        return view('1commits')->with('valores',$commits)->with('repo',$repo)->with('users',$users);
     }
 
 
