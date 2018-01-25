@@ -92,7 +92,7 @@
             <div class="content">
                 <div class="title m-b-md">
                     <img src="icono.png" width="140px" height="140px" alt="Logo"/>
-                    <font color="green">NOESGITHUB</font>
+                    <font color="green">IWGIT</font>
                 </div>
 
                 <div class="links">
