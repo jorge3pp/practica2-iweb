@@ -143,6 +143,7 @@ class WebController extends Controller
 
         try{
             DB::table('lang')->insert(['proglang'=>$nombre]);
+            LaravelSweetAlert::setMessageSuccess("Creado nuevo repositorio");
             return view('1anadirTiposRepositorioPostear');
 
         }catch(\Exception $e) {
@@ -373,7 +374,6 @@ class WebController extends Controller
                     $wiki = DB::table('wiki')->where('id_repo',$id)->first();
                     if($contenido!="") DB::table('wiki')->where('id',$wiki->id)->update(['contenido'=>$contenido]);
                     if($milestone!="") DB::table('wiki')->where('id',$wiki->id)->update(['milestones'=>$milestone]);
-        
                     return view('1mostrarWiki')->with('wiki',$wiki)->with('valor',$repositorio);
                 }
                 catch(\Exception $e) {
@@ -391,9 +391,11 @@ class WebController extends Controller
     }
 
 
+
     public function modificarRepositorios() {
         return view('1modificarRepositorios');
     }
+
 
     public function actualizarRepositorios(){
         $repositorios = Repositorio::all();
@@ -412,6 +414,31 @@ class WebController extends Controller
             }
             
             LaravelSweetAlert::setMessageSuccess("Los datos han sido modificados correctamente");
+            return view('1modificarRepositorios');
+
+        }
+        catch(\Exception $e) {
+            return view('error');
+        }
+
+    }
+
+    public function borrarRepositorios(){
+        $repositorios = Repositorio::all();
+
+        return view('borrarRepositorio')->with('repositorios',$repositorios);
+    }
+
+    public function borrarRepositoriosPostear(Request $request)  {
+        
+        try {
+            $repoid = (int)$request->input('repo');
+
+            if($repoid!="") {
+                DB::table('repositorios')->where('id', $repoid)->delete();
+            }
+            
+            LaravelSweetAlert::setMessageSuccess("Los datos han sido borrados correctamente");
             return view('1modificarRepositorios');
 
         }
@@ -592,7 +619,6 @@ class WebController extends Controller
             } 
         }else if($op == 4) {
             $agente = Agente::where('id',$id)->first();
-            //return view('borrarPostear');
             if(empty($agente)){
                 print '<script language="JavaScript">'; 
                 print 'alert("El agente no existe");'; 
