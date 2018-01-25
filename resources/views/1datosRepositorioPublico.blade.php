@@ -7,57 +7,61 @@
 	<!-- INICIO Codigo Body de la página web -->	
 	
 	<h1 class="title m-b-md" align="center">Detalles del repositorio</h1>
-    @if (Auth::user()->id == $valor->administrador || Auth::user()->email == 'Admin@admin.com')
+	@if (Auth::guest())
 
-    <nav class="navbar navbar-default navbar-inverse container">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Barra de navegacion</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				
-				<!--<a class="navbar-brand" href="/">Inicio</a>-->
-			</div>
+	@else
+		@if (Auth::user()->id == $valor->administrador || Auth::user()->email == 'Admin@admin.com')
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				@if (Auth::guest())
-
-					<ul class="nav navbar-nav">
-						<li><a href="/repositoriosp">Repositorios destacados</a></li>
-					</ul>
+		<nav class="navbar navbar-default navbar-inverse container">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Barra de navegacion</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
 					
-				@else
-					<ul class="nav navbar-nav">
-						<li><a href="{{action('WebController@issueRepositorio', $valor->id)}}">Issues</a></li>
-						<li><a href="{{action('WebController@pullrequestRepositorio', $valor->id)}}">Pull Requests</a></li>
-						<li><a href="{{action('WebController@crearIssue', $valor->id)}}">Crear Issue</a></li>
-						<li><a href="{{action('WebController@crearPullrequest', $valor->id)}}">Crear Pull Request</a></li>
-						<li><a href="{{action('WebController@mostrarWiki', $valor->id)}}">Wiki</a></li>
-						<li><a href="{{action('StorageController@index', $valor->id)}}">SUBIR CODIGO</a></li>
-						<li><a href="/repositorios/{{$valor->id}}/storage/descargararchivo/{{$valor->id}}">DESCARGAR CODIGO</a></li>
-						<li><a href="{{action('StorageController@mostrarfichero', $valor->id)}}">VER CODIGO</a></li>
-                        
-						
-					</ul>
+					<!--<a class="navbar-brand" href="/">Inicio</a>-->
+				</div>
 
-				@endif
-
-				<ul class="nav navbar-nav navbar-right">
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					@if (Auth::guest())
-						<li><a href="login">Iniciar sesión</a></li>
-						<li><a href="register">Registrarse</a></li>
+
+						<ul class="nav navbar-nav">
+							<li><a href="/repositoriosp">Repositorios destacados</a></li>
+						</ul>
+						
 					@else
+						<ul class="nav navbar-nav">
+							<li><a href="{{action('WebController@issueRepositorio', $valor->id)}}">Issues</a></li>
+							<li><a href="{{action('WebController@pullrequestRepositorio', $valor->id)}}">Pull Requests</a></li>
+							<li><a href="{{action('WebController@crearIssue', $valor->id)}}">Crear Issue</a></li>
+							<li><a href="{{action('WebController@crearPullrequest', $valor->id)}}">Crear Pull Request</a></li>
+							<li><a href="{{action('WebController@mostrarWiki', $valor->id)}}">Wiki</a></li>
+							<li><a href="{{action('StorageController@index', $valor->id)}}">SUBIR CODIGO</a></li>
+							<li><a href="/repositorios/{{$valor->id}}/storage/descargararchivo/{{$valor->id}}">DESCARGAR CODIGO</a></li>
+							<li><a href="{{action('StorageController@mostrarfichero', $valor->id)}}">VER CODIGO</a></li>
+							
+							
+						</ul>
 
 					@endif
-				</ul>
-			</div>
-		</div>
-	</nav>
 
-    @endif
+					<ul class="nav navbar-nav navbar-right">
+						@if (Auth::guest())
+							<li><a href="login">Iniciar sesión</a></li>
+							<li><a href="register">Registrarse</a></li>
+						@else
+
+						@endif
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		@endif
+	@endif
 
         <div class="container">
             <h1>Nombre: {{ $valor->nombre }}</h1>

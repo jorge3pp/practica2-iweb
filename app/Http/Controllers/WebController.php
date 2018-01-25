@@ -55,7 +55,6 @@ class WebController extends Controller
     public function datosRepositorioPublico($id) {
         $user = \Auth::user();
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
-        $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
         if($repositorio->privPub == '1' || $repositorio->administrador == $user->id || $user->email == 'Admin@admin.com') {
             return view('1datosRepositorioPublico')->with('valor',$repositorio);
         }
