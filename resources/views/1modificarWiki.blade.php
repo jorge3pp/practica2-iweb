@@ -15,8 +15,9 @@
                     <tr>
                         <td align="left"><label for="milestone">Milestone actual</label><input type="text" name="milestone" id="milestone">
                     </tr>
+					
                     <tr>
-                        <td align="left"><label for="contenido">Contenido</label><input type="text" name="contenido" id="contenido">
+                        <td align="left"><label for="contenido">Contenido</label><textarea cols="50" rows="10" name="contenido" id="contenido"></textarea>
                     </tr>
 				<input type="submit" value="Modificar wiki"></td>
             </tr>

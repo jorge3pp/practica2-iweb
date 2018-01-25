@@ -2,7 +2,12 @@
 
 @section('content')
 
-
+<style>
+    div.justified {
+        display: flex;
+        justify-content: center;
+    }
+</style>
 
 	<!-- INICIO Codigo Body de la página web -->	
 	<h1 align="center">Wiki</h1>
@@ -35,7 +40,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 						<li><a href="{{action('WebController@modificarWiki', $wiki->id)}}">Editar</a></li>
-						<li><a href="/repositoriosp">Crear nueva página</a></li>
+						
 					</ul>
 			</div>
 	</nav>
@@ -43,7 +48,13 @@
 			
         <div>
             <h3 align="center">Nombre del repositorio: {{ $valor->nombre }}</h3>
-            <h5 align="center">Clone: {{ $wiki->clonelink }}</h5>
+            <h5 align="center">Clone: </h5>
+			
+			<div class="justified">
+				<textarea cols="41" readonly="readonly" rows="1">{{ $wiki->clonelink }}</textarea>
+			</div>
+			
+
             <h5 align="center">Milestone: {{ $wiki->milestones }}</h5>
 				<pre class ="container">
 					{{ $wiki->contenido }}
