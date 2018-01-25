@@ -66,7 +66,7 @@
                     @if($valor->estado == 'abierto')
                     <tr>
                    
-                        <td><a> {{ $valor->nombre }}</a> </td>
+                        <td> {{ $valor->nombre }} </td>
 							@if (Auth::guest())
 
 							@else

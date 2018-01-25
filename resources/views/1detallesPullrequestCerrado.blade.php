@@ -35,8 +35,8 @@
 
 
         <h2> Nombre: {{ $valor->nombre }} </h2>
-        <h3>Descripcion del Issue: {{$valor->descripcion}} </h3>
-        <b> Estado del Issue: {{$valor->estado}} </b>
+        <h3>Descripcion del Pull Request: {{$valor->descripcion}} </h3>
+        <b> Estado del Pull Request: {{$valor->estado}} </b>
 		@if($valor->id_issue == '0')
 
 		@else

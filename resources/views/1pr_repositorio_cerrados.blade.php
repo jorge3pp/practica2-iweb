@@ -57,7 +57,7 @@
             @foreach($valores as $valor)
             @if($valor->estado == 'cerrado')
 				<tr>
-					<td><a> {{ $valor->nombre }}</a> </td>
+					<td> {{ $valor->nombre }} </td>
 					<td><a href="{{action('WebController@detallesPullrequestCerrado', $valor->id)}}"> Ver detalles </a></td>
 				</tr> 
 			@endif
