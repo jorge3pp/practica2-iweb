@@ -77,7 +77,6 @@
                 Estrellas del repositorio: {{ $valor->estrellas }}
                 Contador seguidores: {{$valor->contador_seguidores}}
             </pre>
-            <p><a>Modificar los datos u otra cosa</a></p>
         </div>
 
 

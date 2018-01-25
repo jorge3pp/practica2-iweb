@@ -14,9 +14,10 @@ class CommitSeeder extends Seeder
         DB::table('commit')->delete();
         
         $autor = DB::table('users')->where('email','pedroantonino123@gmail.com')->first();
-        $pull = DB::table('pulls')->where('nombre','Primer PR en pedroantonino')->first();
+        $repositorio = DB::table('repositorios')->where('nombre', 'IngenieriaWeb Mola')->first();
 
-        //DB::table('commit')->insert(['nombre' => 'Cambios en la vista','cambios' => 'Vista de los productos','id_usuario' => $autor->id, 'id_pr' => $pull->id ]);
-    
+        DB::table('commit')->insert(['nombre' => 'Cambios en la vista','cambios' => 'Vista de los productos','id_usuario' => $autor->id, 'id_repo' => $repositorio->id ]);
+        DB::table('commit')->insert(['nombre' => 'Cambios en el routes','cambios' => 'Get y Post del modificar articulo','id_usuario' => $autor->id, 'id_repo' => $repositorio->id ]);
+        
     }
 }

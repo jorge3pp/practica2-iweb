@@ -21,7 +21,7 @@ class CreateComentPRTable extends Migration
 
 
             $table->integer('id_pr');
-            $table->foreign('id_pr')->references('id')->on('pulls');
+            $table->foreign('id_pr')->references('id')->on('p_rs');
 
             $table->integer('id_usuario');
             $table->foreign('id_usuario')->references('id')->on('users');

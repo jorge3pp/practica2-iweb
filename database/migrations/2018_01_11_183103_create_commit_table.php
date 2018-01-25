@@ -19,11 +19,14 @@ class CreateCommitTable extends Migration
             $table->string('cambios');
 
             $table->integer('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->foreign('id_usuario')->references('id')->on('users')->unique();
 
+            $table->integer('id_repo');
+            $table->foreign('id_repo')->references('id')->on('repositorios')->unique();
+/*
             $table->integer('id_pr');
-            $table->foreign('id_pr')->references('id')->on('pulls')->nullable();
-
+            $table->foreign('id_pr')->references('id')->on('p_rs');
+*/
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@ class CreateIssuePRTable extends Migration
             $table->integer('id_pr')->unique();
 
             $table->foreign('id_issue')->references('id')->on('issue');
-            $table->foreign('id_pr')->references('id')->on('pulls');
+            $table->foreign('id_pr')->references('id')->on('p_rs');
 
             $table->timestamps();
         });

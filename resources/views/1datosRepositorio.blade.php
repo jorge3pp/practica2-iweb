@@ -29,6 +29,7 @@
 					
 				@else
 					<ul class="nav navbar-nav">
+						<li><a href="{{action('WebController@commitsRepositorio', $valor->id)}}">Commits</a></li>
 						<li><a href="{{action('WebController@issueRepositorio', $valor->id)}}">Issues</a></li>
 						<li><a href="{{action('WebController@pullrequestRepositorio', $valor->id)}}">Pull Requests</a></li>
 						<li><a href="{{action('WebController@crearIssue', $valor->id)}}">Crear Issue</a></li>
@@ -70,7 +71,6 @@
                 Estrellas del repositorio: {{ $valor->estrellas }}
                 Contador seguidores: {{$valor->contador_seguidores}}
             </pre>
-            <p><a>Modificar los datos u otra cosa</a></p>
         </div>
 
 
