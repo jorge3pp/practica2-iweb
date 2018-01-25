@@ -73,13 +73,13 @@ class WebController extends Controller
         
         if( $repositorio->privPub == '1')  {
             $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
-            return view('1issue_repositorio')->with('valores',$issues);
+            return view('1issue_repositorio')->with('valores',$issues)->with('repositorio',$repositorio);
         }
 
         else {
             if ($repositorio->administrador == $user->id || $user->email == 'Admin@admin.com' ) {
                 $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
-                return view('1issue_repositorio')->with('valores',$issues);
+                return view('1issue_repositorio')->with('valores',$issues)->with('repositorio',$repositorio);
 
             }
             else {
@@ -92,18 +92,17 @@ class WebController extends Controller
 
     public function issueRepositorioCerrados($id) {
         $user = \Auth::user();
-        
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
         
         if( $repositorio->privPub == '1')  {
             $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
-            return view('1issue_repositorio_cerrados')->with('valores',$issues);
+            return view('1issue_repositorio_cerrados')->with('valores',$issues)->with('repositorio',$repositorio);
         }
 
         else {
             if ($repositorio->administrador == $user->id || $user->email == 'Admin@admin.com' ) {
                 $issues = DB::table('issues')->where('id_repo',$id)->paginate(10);
-                return view('1issue_repositorio_cerrados')->with('valores',$issues);
+                return view('1issue_repositorio_cerrados')->with('valores',$issues)->with('repositorio',$repositorio);
 
             }
             else {
@@ -246,12 +245,14 @@ class WebController extends Controller
     
     public function pullrequestRepositorio($id) {
         $pulls = DB::table('p_rs')->where('id_repo',$id)->paginate(10);
-        return view('1pr_repositorio')->with('valores',$pulls);
+        $repo = DB::table('repositorios')->where('id',$id)->first();
+        return view('1pr_repositorio')->with('valores',$pulls)->with('repo',$repo);
     }
 
     public function pullrequestRepositorioCerrados($id) {
         $pulls = DB::table('p_rs')->where('id_repo',$id)->paginate(10);
-        return view('1pr_repositorio_cerrados')->with('valores',$pulls);
+        $repo = DB::table('repositorios')->where('id',$id)->first();
+        return view('1pr_repositorio_cerrados')->with('valores',$pulls)->with('repo',$repo);
     }
 
     public function crearPullrequest(Request $request, $id){
@@ -356,11 +357,6 @@ class WebController extends Controller
         $wiki = DB::table('wiki')->where('id_repo',$id)->first();
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
         return view('1mostrarWiki')->with('wiki',$wiki)->with('valor',$repositorio);
-    }
-
-    public function detallesWikiPage($id,$page) {
-        $issue = DB::table('issues')->where('id',$id)->first();
-        return view('1detallesIssue')->with('valor',$issue);
     }
 
     public function modificarWikiPostear(Request $request,$id){

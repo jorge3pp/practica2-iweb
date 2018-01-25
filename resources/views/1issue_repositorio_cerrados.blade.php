@@ -21,23 +21,13 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-
-						@if(count($valores) > 0)
-							<li><a href="{{action('WebController@issueRepositorio', $valores->get(0)->id_repo)}}">Abiertos</a></li>
-						@endif
-
+						<li><a href="{{action('WebController@issueRepositorio', $repositorio->id)}}">Abiertos</a></li>
 						<li><a href="#">Cerrados</a></li>
-
-						@if(count($valores) > 0)
-							<li><a href="{{action('WebController@crearIssue', $valores->get(0)->id_repo)}}">Crear Issue</a></li>
-						@endif
+						<li><a href="{{action('WebController@crearIssue', $repositorio->id)}}">Crear Issue</a></li>
 					</ul>
 
                     <ul class="nav navbar-nav navbar-right">
-					@if(count($valores) > 0)
-					
-						<li><a href="{{action('WebController@datosRepositorio', $valores->get(0)->id_repo)}}">VOLVER A LA PAGINA PRINCIPAL DEL REPOSITORIO</a></li>
-					@endif
+						<li><a href="{{action('WebController@datosRepositorio', $repositorio->id)}}">VOLVER A LA PAGINA PRINCIPAL DEL REPOSITORIO</a></li>
 				</ul>
 			</div>
 		</div>
