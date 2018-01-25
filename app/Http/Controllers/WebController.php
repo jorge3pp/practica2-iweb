@@ -324,7 +324,7 @@ class WebController extends Controller
                     $repo->administrador = $administrador;
                     $repo->save();
 
-                    DB::table('wiki')->insert(['id_repo' => $repo->id]);
+                    DB::table('wiki')->insert(['id_repo' => $repo->id, 'clonelink' => "localhost:8000/repositorios/$repo->id/storage/descargararchivo/$repo->id"]);
                     
 /*
 
