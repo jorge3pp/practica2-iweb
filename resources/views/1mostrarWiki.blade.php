@@ -55,7 +55,7 @@
             <h5 align="center">Clone: </h5>
 			
 			<div class="justified">
-				<textarea cols="41" readonly="readonly" rows="1">{{ $wiki->clonelink }}</textarea>
+				<textarea cols="43" readonly="readonly" rows="1">{{ $wiki->clonelink }}</textarea>
 			</div>
 			
 
