@@ -17,12 +17,25 @@
                     <h1>Commits</h1>
                     <table class="table table-striped">
 
+                        <tr>
+                            <th>Nombre del commit</th>
+                            <th>Descripcion</th>
+                            <th>Usuario</th>
+                            <!-- <th>Descarga</th> -->
+                        </tr>    
+
                         @foreach($valores as $valor)
 
                             
                         <tr>
                             <td> {{ $valor->nombre }} </td>
                             <td> {{ $valor->cambios }} </td>
+                            @foreach ($users as $user)
+                                @if($valor->id_usuario == $user->id)
+                                    <td> {{ $user->name }} </td>  
+                                @endif
+                            @endforeach
+                            <!-- <td><a href="/repositorios/{{$valor->id}}/storage/descargararchivo/{{$valor->id}}"> Descarga </a></td> -->
                         </tr> 
 
                         @endforeach

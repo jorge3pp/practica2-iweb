@@ -67,5 +67,26 @@ class StorageController extends Controller
         }
         
     }
+    
+    /*public function descargarfichero($id) {
+        $user = \Auth::user();
+        $repositorio = DB::table('repositorios')->where('id',$id)->first();
+
+        if($repositorio->administrador == $user->id) {
+            $public_path = public_path();
+            $url = $public_path.'/storage/images/'.$id;
+            
+            if (Storage::exists($id)) {
+                return response()->download($url);
+            }
+            else {
+                return view ('error_archivo_no_encontrado');
+            }
+        }
+        else {
+            return view('error_permisos_repositorio');
+        }
+    }*/
+
 
 }
