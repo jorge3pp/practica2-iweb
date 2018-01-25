@@ -22,7 +22,7 @@ class StorageController extends Controller
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
         $repositorios = DB::table('repositorios')->where('administrador',$user->id)->paginate(10);
 
-        if($repositorio->administrador == $user->id) {
+        if($repositorio->administrador == $user->id || $user->email == 'Admin@admin.com') {
             return view('1formulario')->with('valor',$repositorio);
         }
         else {
@@ -34,9 +34,12 @@ class StorageController extends Controller
 
     public function save(Request $request,$id) {
         $user = \Auth::user();
+        try{
+            // try code
+        
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
 
-        if($repositorio->administrador == $user->id) {
+        if($repositorio->administrador == $user->id || $user->email == 'Admin@admin.com') {
             $file = $request->file('file');
             $nombre = $id;
             \Storage::disk('local')->put($nombre,  \File::get($file));
@@ -46,13 +49,17 @@ class StorageController extends Controller
         else {
             return view('error_permisos_repositorio');
         }
+        }
+        catch(\Exception $e){
+            return view('error');
+        }
     }
 
     public function mostrarfichero($id) {
         $user = \Auth::user();
         $repositorio = DB::table('repositorios')->where('id',$id)->first();
 
-        if($repositorio->administrador == $user->id) {
+        if($repositorio->administrador == $user->id || $user->email == 'Admin@admin.com') {
             return view('1mostrarfichero')->with('valor',$id);
         }
         else {
