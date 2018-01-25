@@ -43,8 +43,9 @@
     </div>
     @endif
 	
-	<h1 class="title m-b-md" align="left">Selecciona el repositorio a actualizar</h1>
-
+	
+	<div class="container">
+	<h1 class="title m-b-md">Selecciona el repositorio a actualizar</h1>
 	<form method="POST">
 	{{ csrf_field() }}
 		<table width="600px" align="left">
@@ -80,6 +81,7 @@
             
 		</table>  
 	</form>
+	</div>
 
 	<!-- FIN Codigo Body de la página web -->
 	
