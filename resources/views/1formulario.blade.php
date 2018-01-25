@@ -9,7 +9,7 @@
     <div class="panel panel-default">
       <div class="panel-heading"><h1>Agregar archivos en el repositorio: {{$valor->nombre}}</h1></div>
         <div class="panel-body">
-          <form method="POST" action="http://localhost:8000/repositorios/{{$valor->id}}/storage/subirarchivo" accept-charset="UTF-8" enctype="multipart/form-data">
+          <form method="POST" action="http://localhost:8000/repositorios/{{$valor->id}}/subirarchivo" accept-charset="UTF-8" enctype="multipart/form-data">
             
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             

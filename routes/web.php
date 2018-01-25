@@ -94,8 +94,8 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     Route::get('/repositorios/{id}/wiki/{page}','WebController@detallesWikiPage');
 
     //-- parte trabajar con archivos
-    Route::get('/repositorios/{id}/subirarchivos', 'StorageController@index');
-    Route::post('/repositorios/{id}/storage/subirarchivo', 'StorageController@save');
+    Route::get('/repositorios/{id}/subirarchivo', 'StorageController@index');
+    Route::post('/repositorios/{id}/subirarchivo', 'StorageController@save');
     Route::get('/repositorios/{id}/storage/mostrarfichero', 'StorageController@mostrarfichero');
 
     Route::get('/repositorios/{id}/storage/descargararchivo/{archivo}', function ($id) {
