@@ -40,9 +40,13 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 						<li><a href="{{action('WebController@modificarWiki', $wiki->id)}}">Editar</a></li>
-						
-					</ul>
-			</div>
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right">
+						<li><a href="{{action('WebController@datosRepositorio', $valor->id)}}">VOLVER A LA PAGINA PRINCIPAL DEL REPOSITORIO</a></li>
+			</ul>
+
+		</div>
 	</nav>
 	
 			

@@ -2,8 +2,25 @@
 
 @section('content')
 
+
+<style>
+    div.justified {
+        display: flex;
+        justify-content: center;
+		width: 1170px; 
+		position: relative; 
+		left: 338px; 
+		border-width: 2px; 
+		border-radius: 1em; 
+		border-color:blue; 
+		color:black; 
+		border-style: solid;
+    }
+</style>
+
 	<!-- INICIO Codigo Body de la página web -->
     <h1 align="center">El código del repositorio</h1>
+	<br>
     <nav class="navbar navbar-default navbar-inverse container">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -29,9 +46,8 @@
 		</div>
 	</nav>
 
-    <div id="codigo" style="width: 1200px; position: relative; left: 50px; border-width: 2px; border-radius: 1em; border-color:blue; color:black; border-style: solid;">
+    <div id="codigo" class="justified">
 
-    
         <div  id="codigo" style="position: relative; left: 30px;">
             
             <?php
