@@ -33,6 +33,9 @@ Route::get('/repositoriosp','WebController@repositoriosDestacados');
 Route::get('/repositoriosp/{id}','WebController@datosRepositorioPublico');
 //Route::get('/repositorios/{id}/issues','WebController@issueRepositorio');
 
+Route::get('/repositorios/{id}/issues','WebController@issueRepositorio');
+Route::get('/repositorios/{id}/issuescerrados','WebController@issueRepositorioCerrados');
+
 // FIN DE ESTAS COSAS
 
 
@@ -67,8 +70,8 @@ Route::group(['middleware' => 'partePrivadaUser'], function() {
     Route::get('/repositorios','WebController@repositoriosUsuario');
 
     Route::get('/repositorios/{id}','WebController@datosRepositorio');
-    Route::get('/repositorios/{id}/issues','WebController@issueRepositorio');
-    Route::get('/repositorios/{id}/issuescerrados','WebController@issueRepositorioCerrados');
+
+
     Route::get('/repositorios/{id}/issue/crearissue','WebController@crearIssue');
     Route::post('/repositorios/{id}/issue/crearissue','WebController@crearIssuePostear');
     

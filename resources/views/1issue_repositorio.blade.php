@@ -24,9 +24,13 @@
 					<ul class="nav navbar-nav">
 
 						@if(count($valores) > 0)
-							<li><a href="#">Abiertos</a></li>
-						    <li><a href="{{action('WebController@issueRepositorioCerrados', $valores->get(0)->id_repo)}}">Cerrados</a></li>
-                            <li><a href="{{action('WebController@crearIssue', $valores->get(0)->id_repo)}}">Crear Issue</a></li>
+							@if (Auth::guest())
+
+							@else
+								<li><a href="#">Abiertos</a></li>
+								<li><a href="{{action('WebController@issueRepositorioCerrados', $valores->get(0)->id_repo)}}">Cerrados</a></li>
+                            	<li><a href="{{action('WebController@crearIssue', $valores->get(0)->id_repo)}}">Crear Issue</a></li>
+							@endif
                         @endif
 
                         
@@ -35,8 +39,12 @@
 
                     <ul class="nav navbar-nav navbar-right">
 					@if(count($valores) > 0)
-						<li><a href="{{action('WebController@datosRepositorio', $valores->get(0)->id_repo)}}">VOLVER A LA PAGINA PRINCIPAL DEL REPOSITORIO</a></li>
-                    @endif
+						@if (Auth::guest())
+							<li><a href="/repositoriosp">VOLVER A LA PAGINA DE REPOSITORIOS DESTACADOS</a></li>
+						@else
+							<li><a href="{{action('WebController@datosRepositorio', $valores->get(0)->id_repo)}}">VOLVER A LA PAGINA PRINCIPAL DEL REPOSITORIO</a></li>
+						@endif
+					@endif
                     
 				</ul>
 			</div>
@@ -59,8 +67,12 @@
                     <tr>
                    
                         <td><a> {{ $valor->nombre }}</a> </td>
+							@if (Auth::guest())
+
+							@else
                             <td><a href="{{action('WebController@detallesIssue', $valor->id)}}"> Ver detalles </a></td>
                             <td><a href="{{action('WebController@cerrarIssue', $valor->id)}}"> Cerrar Issue </a></td>
+							@endif
                     </tr>
                    @endif
 
