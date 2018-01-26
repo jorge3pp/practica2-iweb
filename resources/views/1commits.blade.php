@@ -9,6 +9,13 @@
     @else
         <h1 class="title m-b-md" align="center">Lista de Commits de: {{ $repo->nombre }} </h1>
 
+        <nav class="navbar navbar-default navbar-inverse container">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{action('WebController@datosRepositorio', $repo->id)}}">VOLVER A LA PAGINA PRINCIPAL DEL REPOSITORIO</a></li>
+                </ul>
+            </div>
+        </nav>
             <div class="container">
                 {{$valores->links()}}
             </div>
@@ -16,7 +23,6 @@
                 <div class="container">
                     <h1>Commits</h1>
                     <table class="table table-striped">
-
                         <tr>
                             <th>Nombre del commit</th>
                             <th>Descripcion</th>

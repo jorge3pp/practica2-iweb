@@ -60,6 +60,7 @@
 						
 					@else
 						<ul class="nav navbar-nav">
+						<li><a href="{{action('WebController@commitsRepositorio', $valor->id)}}">Commits</a></li>
 							<li><a href="{{action('WebController@issueRepositorio', $valor->id)}}">Issues</a></li>
 							<li><a href="{{action('WebController@pullrequestRepositorio', $valor->id)}}">Pull Requests</a></li>
 							<li><a href="{{action('WebController@mostrarWiki', $valor->id)}}">Wiki</a></li>
